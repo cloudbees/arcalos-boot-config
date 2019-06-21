@@ -114,3 +114,17 @@ tekton:
 JenkinsXGitHub:
   username: "{{ .Parameters.pipelineUser.github.username }}"
   password: "{{ .Parameters.pipelineUser.github.token }}"
+
+external-dns:
+  sources:
+  - ingress
+  provider: google
+  google:
+    serviceAccount: external-dns
+  rbac:
+    create: "true"
+  domainFilters:
+  - "{{ .Parameters.domain }}"
+
+ certmanager:
+  email:  "{{ .Parameters.email }}" 

@@ -6,7 +6,6 @@ metadata:
     nginx.ingress.kubernetes.io/auth-secret: jx-basic-auth
     nginx.ingress.kubernetes.io/auth-type: basic
   name: deck
-  namespace: jx
 spec:
   rules:
   - host: deck{{ .Values.cluster.namespaceSubDomain }}{{ .Values.cluster.domain }}
@@ -15,3 +14,9 @@ spec:
       - backend:
           serviceName: deck
           servicePort: 80
+{{- if .Values.cluster.tls }}
+  tls:
+  - hosts:
+    - deck{{ .Values.cluster.namespaceSubDomain }}{{ .Values.cluster.domain }}
+    secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}"
+{{- end }}

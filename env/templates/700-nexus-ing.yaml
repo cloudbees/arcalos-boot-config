@@ -12,3 +12,9 @@ spec:
       - backend:
           serviceName: nexus
           servicePort: 80
+{{- if .Values.cluster.tls }}
+  tls:
+  - hosts:
+    - nexus{{ .Values.cluster.namespaceSubDomain }}{{ .Values.cluster.domain }}
+    secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}"
+{{- end }}
