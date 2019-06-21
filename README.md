@@ -55,7 +55,7 @@ If you look at the current [env/parameters.yaml](https://github.com/jstrachan/en
 This means we can populate all the Parameters we need on startup then refer to them from `values.yaml` to populate the tree of values to then inject those into Vault.
 
 
-#### Populating the `parameters.yaml` file 
+#### Populating the `parameters.yaml` file 
 
 We can then use the new step to populate the `parameters.yaml` file via this command in the `env` folder:
 
