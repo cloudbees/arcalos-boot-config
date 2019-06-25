@@ -4,7 +4,10 @@ pipelineConfig:
     release:
       pipeline:
         agent:
-          image: docker.io/rawlingsj80/builder-go:wip71
+          image: gcr.io/jenkinsxio/builder-go
+        environment:
+          - name: DEPLOY_NAMESPACE
+            value: jx
         stages:
           - name: release
             steps:
@@ -12,9 +15,6 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','verify','preinstall']
-                env:
-                  - name: DEPLOY_NAMESPACE
-                    value: jx
               - name: cert-manager-crds
                 dir: /workspace/source
                 command: kubectl
@@ -43,36 +43,22 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','create','install', 'values', '-b']
-                env:
-                  - name: DEPLOY_NAMESPACE
-                    value: jx
-
-              # TODO only run the following in bootstrap mode!
               - name: helm-populate-params
                 dir: /workspace/source/env
                 command: jx
                 args: ['step', 'create', 'values', '--name', 'parameters']
-                env:
-                  - name: DEPLOY_NAMESPACE
-                    value: jx
               - name: helm-build
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--remote', '--name', 'jenkins-x']
-                env:
-                  - name: DEPLOY_NAMESPACE
-                    value: jx
               - name: verify-install
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','verify','install']
-                env:
-                  - name: DEPLOY_NAMESPACE
-                    value: jx
     pullRequest:
       pipeline:
         agent:
-          image: docker.io/rawlingsj80/builder-go:wip70
+          image: gcr.io/jenkinsxio/builder-go
         stages:
           - name: release
             steps:
