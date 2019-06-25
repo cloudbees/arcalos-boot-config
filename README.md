@@ -24,7 +24,7 @@ Clone this git repository and make sure you have a recent `jx` binary:
 From inside the git clone of this repository type:
 
 ``` 
-./bootstrap.sh
+jx boot
 ```
 
 The bootstrap process runs the Jenkins X Pipeline in interpret mode as there's nothing running in your Kubernetes cluster yet and so there's no server side tekton controller until after we bootstrap.
