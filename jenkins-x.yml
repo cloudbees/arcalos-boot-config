@@ -66,6 +66,9 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','verify','install']
+                env:
+                  - name: DEPLOY_NAMESPACE
+                    value: jx
     pullRequest:
       pipeline:
         agent:
