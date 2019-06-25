@@ -1,3 +1,5 @@
+provider: gke
 kaniko: true
 secretStorage: local
+project: apps-dev-229310
 clusterName: dev-cluster-jstrachan

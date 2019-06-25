@@ -8,6 +8,13 @@ pipelineConfig:
         stages:
           - name: release
             steps:
+              - name: verify-preintall
+                dir: /workspace/source/env
+                command: jx
+                args: ['step','verify','preinstall']
+                env:
+                  - name: DEPLOY_NAMESPACE
+                    value: jx
               - name: cert-manager-crds
                 dir: /workspace/source
                 command: kubectl
