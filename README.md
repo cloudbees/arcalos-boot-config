@@ -60,7 +60,7 @@ This means we can populate all the Parameters we need on startup then refer to t
 We can then use the new step to populate the `parameters.yaml` file via this command in the `env` folder:
 
 ``` 
-jx step create values --name parameters --secrets-scheme=local --secret-base-path dev-cluster-jstrachan
+jx step create values --name parameters
 ```
 
 This uses the [parameters.schema.json](https://github.com/jstrachan/environment-simple-tekton/blob/master/env/parameters.schema.json) file which powers the UI.

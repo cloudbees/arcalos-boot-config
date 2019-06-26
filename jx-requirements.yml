@@ -1,5 +1,6 @@
 provider: gke
+secretStorage: vault
 kaniko: true
-secretStorage: local
 project: apps-dev-229310
-clusterName: dev-cluster-jstrachan
+clusterName: jstrachan-co7
+zone: europe-west1-d
