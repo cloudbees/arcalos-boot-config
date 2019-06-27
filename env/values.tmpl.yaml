@@ -13,17 +13,17 @@ gitops:
   owner: cb-kubecd
 
   dev:
-    repo: environment-jstrachan-ad1
+    repo: environment-simple-tekton
+    owner: jstrachan
     server: ""
-    owner: ""
   staging:
     repo: environment-jstrachan-ad1-staging
-    server: ""
     owner: ""
+    server: ""
   production:
     repo: environment-jstrachan-ad1-production
-    server: ""
     owner: ""
+    server: ""
 
 controllerbuild:
   enabled: true

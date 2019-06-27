@@ -1,0 +1,13 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepositoryGroup
+metadata:
+  name: default-group
+spec:
+  scheduler:
+    apiVersion: jenkins.io/v1
+    kind: Scheduler
+    name: default-scheduler
+  repositories:
+    - apiVersion: jenkins.io/v1
+      kind: SourceRepository
+      name: jstrachan-nodey126

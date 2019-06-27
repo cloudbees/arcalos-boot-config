@@ -1,0 +1,1 @@
+The Prow `ConfigMap` resources called `config` and `plugins` are generated here in case you wish to store them in git

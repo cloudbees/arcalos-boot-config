@@ -1,0 +1,9 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  name: jstrachan-nodey126
+spec:
+  provider: https://github.com
+  providerName: github
+  org: jstrachan
+  repo: nodey126
