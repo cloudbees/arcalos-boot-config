@@ -12,5 +12,5 @@ spec:
   promotionStrategy: Auto
   source:
     ref: master
-    url: {{ .Values.gitops.staging.gitUrl }}
+    url: "{{ .Values.gitops.staging.server | default .Values.gitops.server }}/{{ .Values.gitops.staging.owner | default .Values.gitops.owner }}/{{ .Values.gitops.staging.repo | default .Values.gitops.repo }}.git"
   teamSettings: {}

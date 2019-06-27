@@ -8,12 +8,22 @@ cluster:
   tls: false
 
 gitops:
+  gitKind: github
+  server: https://github.com
+  owner: cb-kubecd
+
   dev:
-    gitUrl: https://github.com/cb-kubecd/environment-jstrachan-ad1.git
+    repo: environment-jstrachan-ad1
+    server: ""
+    owner: ""
   staging:
-    gitUrl: https://github.com/cb-kubecd/environment-jstrachan-ad1-staging.git
+    repo: environment-jstrachan-ad1-staging
+    server: ""
+    owner: ""
   production:
-    gitUrl: https://github.com/cb-kubecd/environment-jstrachan-ad1-production.git
+    repo: environment-jstrachan-ad1-production
+    server: ""
+    owner: ""
 
 controllerbuild:
   enabled: true

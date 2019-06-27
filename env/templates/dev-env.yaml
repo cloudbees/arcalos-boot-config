@@ -14,7 +14,7 @@ spec:
   promotionStrategy: Never
   source:
     ref: master
-    url: {{ .Values.gitops.dev.gitUrl }}
+    url: "{{ .Values.gitops.dev.server | default .Values.gitops.server }}/{{ .Values.gitops.dev.owner | default .Values.gitops.owner }}/{{ .Values.gitops.dev.repo | default .Values.gitops.repo }}.git"
   teamSettings:
     appsRepository: http://chartmuseum.jenkins-x.io
     buildPackName: kubernetes-workloads
