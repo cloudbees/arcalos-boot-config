@@ -1,5 +1,5 @@
 adminUser:
-  password: local:jstrachan-lo2/adminUser:password
+  password: local:jstrachan-ofo2/adminUser:password
   username: admin
 enableDocker: false
 gitProvider: github
@@ -7,7 +7,7 @@ gpg: {}
 pipelineUser:
   github:
     host: github.com
-    token: local:jstrachan-lo2/pipelineUser-github:token
+    token: local:jstrachan-ofo2/pipelineUser-github:token
     username: jenkins-x-bot-test
 prow:
-  hmacToken: local:jstrachan-lo2/prow:hmacToken
+  hmacToken: local:jstrachan-ofo2/prow:hmacToken

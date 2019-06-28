@@ -2,5 +2,5 @@ provider: gke
 secretStorage: local
 kaniko: true
 project: apps-dev-229310
-clusterName: jstrachan-lo2
-zone: europe-west1-d
+clusterName: jstrachan-ofo2
+zone: europe-west1-c
