@@ -1,7 +1,10 @@
+{{- if .Values.gitops.staging.repo }}
 apiVersion: jenkins.io/v1
 kind: SourceRepository
 metadata:
   name: "{{ .Values.gitops.staging.owner | default .Values.gitops.owner }}-{{ .Values.gitops.staging.repo }}"
+  labels:
+    jenkins.io/gitSync: "false"
 spec:
   provider: "{{ .Values.gitops.staging.server | default .Values.gitops.server }}"
   providerName: '{{ .Values.gitops.gitKind | default "github" }}'
@@ -11,3 +14,4 @@ spec:
   scheduler:
     kind: Scheduler
     name: env-scheduler
+{{- end }}

@@ -1,3 +1,4 @@
+{{- if .Values.gitops.production.repo }}
 apiVersion: jenkins.io/v1
 kind: Environment
 metadata:
@@ -13,5 +14,5 @@ spec:
   promotionStrategy: Manual
   source:
     ref: master
-    url: "{{ .Values.gitops.production.server | default .Values.gitops.server }}/{{ .Values.gitops.production.owner | default .Values.gitops.owner }}/{{ .Values.gitops.production.repo | default .Values.gitops.repo }}.git"
-  teamSettings: {}
+    url: "{{ .Values.gitops.production.server | default .Values.gitops.server }}/{{ .Values.gitops.production.owner | default .Values.gitops.owner }}/{{ .Values.gitops.production.repo }}.git"
+{{- end }}

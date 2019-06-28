@@ -20,6 +20,10 @@ spec:
     buildPackName: kubernetes-workloads
     buildPackRef: master
     buildPackUrl: https://github.com/jenkins-x-buildpacks/jenkins-x-kubernetes.git
+    defaultScheduler:
+      apiVersion: jenkins.io/v1
+      kind: Scheduler
+      name: default-scheduler
     dockerRegistryOrg: jenkins-x-infra
     envOrganisation: jenkins-x
     gitServer: https://github.com
@@ -28,6 +32,7 @@ spec:
     kubeProvider: gke
     pipelineUsername: "{{ .Values.JenkinsXGitHub.username }}"
     promotionEngine: Prow
+    prowConfig: Scheduler
     prowEngine: Tekton
     quickstartLocations:
     - excludes:

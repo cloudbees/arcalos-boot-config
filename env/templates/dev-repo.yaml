@@ -2,6 +2,8 @@ apiVersion: jenkins.io/v1
 kind: SourceRepository
 metadata:
   name: "{{ .Values.gitops.dev.owner | default .Values.gitops.owner }}-{{ .Values.gitops.dev.repo }}"
+  labels:
+    jenkins.io/gitSync: "false"
 spec:
   provider: "{{ .Values.gitops.dev.server | default .Values.gitops.server }}"
   providerName: '{{ .Values.gitops.gitKind | default "github" }}'
