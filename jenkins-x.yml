@@ -79,7 +79,7 @@ pipelineConfig:
               - name: verify-install
                 dir: /workspace/source/env
                 command: jx
-                args: ['step','verify','install']
+                args: ['step','verify','install', '--pod-wait-time', '30m']
     pullRequest:
       pipeline:
         agent:
