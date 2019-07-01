@@ -1,6 +1,6 @@
 provider: gke
 secretStorage: local
 kaniko: true
-project: apps-dev-229310
-clusterName: jstrachan-ofo2
+project: jenkins-x-bdd2
+clusterName: bdd-boot
 zone: europe-west1-c
