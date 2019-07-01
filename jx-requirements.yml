@@ -1,6 +1,14 @@
 provider: gke
 secretStorage: local
 kaniko: true
-project: jenkins-x-bdd2
-clusterName: bdd-boot
+project: apps-dev-229310
+clusterName: jstrachan-ofo2
 zone: europe-west1-c
+environments:
+  - key: staging
+    owner: cb-kubecd
+    repository: environment-jstrachan-ad1-staging
+  - key: production
+    owner: cb-kubecd
+    repository: environment-jstrachan-ad1-production
+

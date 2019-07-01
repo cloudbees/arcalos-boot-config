@@ -17,12 +17,13 @@ gitops:
     owner: jstrachan
     server: ""
   staging:
-    repo: environment-jstrachan-ad1-staging
-    owner: ""
+    repo: "{{ .Environments.staging.repository }}"
+    owner: "{{ .Environments.staging.owner }}"
     server: ""
+
   production:
-    repo: environment-jstrachan-ad1-production
-    owner: ""
+    repo: "{{ .Environments.production.repository }}"
+    owner: "{{ .Environments.production.owner }}"
     server: ""
 
 controllerbuild:
