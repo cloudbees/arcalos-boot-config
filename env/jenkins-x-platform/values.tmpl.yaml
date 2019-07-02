@@ -108,7 +108,7 @@ PipelineSecrets:
             </profiles>
 
             <activeProfiles>
-                <!--<activeProfile>nexus</activeProfile>-->
+                <activeProfile>nexus</activeProfile>
             </activeProfiles>
         </settings>
     SSHConfig: |-
