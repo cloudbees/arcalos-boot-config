@@ -7,9 +7,8 @@ This repository contains the source code for the Jenkins X Development Environme
 
 ### Creating a kubernetes cluster
 
-* either use Terraform to spin up a GKE cluster with a `jx` namespace
-* create an empty GKE clsuer by hand e.g. via `jx create cluster gke --skip-installation`
-  * then create a `jx` namespace via `kubectl create ns jx`  
+* either use Terraform to spin up a GKE cluster with a `jx` namespace and any necessary cloud resources (e.g. on GCP we need a Kaniko Service Account and Secret)
+* create an empty GKE cluster by hand e.g. via `jx create cluster gke --skip-installation` or using the [GCP Console](https://console.cloud.google.com/)
 
 ### Run the new Jenkins X Bootstrap Pipeline
 
@@ -20,6 +19,8 @@ From inside the git clone of this repository type:
 ``` 
 jx boot
 ```
+
+If you are not in a clone of a boot git repository then `jx boot` will clone this repository and `cd` into the clone.
 
 The bootstrap process runs the Jenkins X Pipeline in interpret mode as there's nothing running in your Kubernetes cluster yet and so there's no server side tekton controller until after we bootstrap.
 
