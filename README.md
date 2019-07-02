@@ -6,16 +6,10 @@ This repository contains the source code for the Jenkins X Development Environme
 ## How to install...
 
 ### Creating a kubernetes cluster
- 
-* either use Terraform to spin up a GKE cluster with a `jx` namespace with a Secret called `kaniko-secret` which has the kaniko Service Account secret details
+
+* either use Terraform to spin up a GKE cluster with a `jx` namespace
 * create an empty GKE clsuer by hand e.g. via `jx create cluster gke --skip-installation`
-  * then run:
-
-``` 
-kubectl create ns jx
-```  
-
-Then create the kaniko secret (maybe copy from another cluster for now until we can automate this part?)
+  * then create a `jx` namespace via `kubectl create ns jx`  
 
 ### Run the new Jenkins X Bootstrap Pipeline
 
