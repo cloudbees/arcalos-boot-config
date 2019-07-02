@@ -10,11 +10,11 @@ cluster:
 gitops:
   gitKind: github
   server: https://github.com
-  owner: cb-kubecd
+  owner: ""
 
   dev:
-    repo: environment-simple-tekton
-    owner: jstrachan
+    repo: "{{ .Environments.dev.repository }}"
+    owner: "{{ .Environments.dev.owner }}"
     server: ""
   staging:
     repo: "{{ .Environments.staging.repository }}"

@@ -12,9 +12,11 @@ spec:
   previewGitInfo:
     user: {}
   promotionStrategy: Never
+{{- if  and .Values.gitops.dev.repo .Values.gitops.dev.owner }}
   source:
     ref: master
-    url: "{{ .Values.gitops.dev.server | default .Values.gitops.server }}/{{ .Values.gitops.dev.owner | default .Values.gitops.owner }}/{{ .Values.gitops.dev.repo | default .Values.gitops.repo }}.git"
+    url: "{{ .Values.gitops.dev.server | default .Values.gitops.server }}/{{ .Values.gitops.dev.owner }}/{{ .Values.gitops.dev.repo }}.git"
+{{- end }}
   teamSettings:
     appsRepository: http://chartmuseum.jenkins-x.io
     buildPackName: kubernetes-workloads

@@ -55,6 +55,10 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--remote', '--name', 'jenkins-x']
+              - name: verify-env
+                dir: /workspace/source/env
+                command: jx
+                args: ['step','verify','env', '-b']
               - name: log-repos
                 dir: /workspace/source/repositories
                 command: echo

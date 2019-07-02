@@ -2,13 +2,17 @@ provider: gke
 secretStorage: local
 kaniko: true
 project: apps-dev-229310
-clusterName: jstrachan-ofo2
 zone: europe-west1-c
+clusterName: jstrachan-con5
+environmentGitOwner: cb-kubecd
 environments:
+  - key: dev
+    owner: ""
+    repository: ""
   - key: staging
-    owner: cb-kubecd
-    repository: environment-jstrachan-ad1-staging
+    owner: ""
+    repository: ""
   - key: production
-    owner: cb-kubecd
-    repository: environment-jstrachan-ad1-production
+    owner: ""
+    repository: ""
 

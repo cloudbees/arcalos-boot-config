@@ -9,7 +9,7 @@ dependencies:
   version: 0.0.849
 - name: jenkins-x-platform
   repository: http://chartmuseum.jenkins-x.io
-  version: 2.0.718
+  version: 2.0.744
 #- condition: chartmuseum.enabled
 #  name: chartmuseum
 #  repository: http://chartmuseum.jenkins-x.io
