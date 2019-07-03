@@ -1,3 +1,6 @@
+webhook:
+  enabled: false
+
 auth:
   git:
     username: "{{ .Parameters.pipelineUser.github.username }}"

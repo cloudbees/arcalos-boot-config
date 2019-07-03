@@ -16,6 +16,14 @@ gitops:
     repo: "{{ .Environments.dev.repository }}"
     owner: "{{ .Environments.dev.owner }}"
     server: ""
+    envOrganisation: "{{ .Requirements.environmentGitOwner }}"
+{{- if eq .Requirements.provider "gke" }}
+    dockerRegistryOrg: "{{ .Requirements.project }}"
+{{- else }}
+    dockerRegistryOrg: ""
+{{- end }}
+
+
   staging:
     repo: "{{ .Environments.staging.repository }}"
     owner: "{{ .Environments.staging.owner }}"
@@ -26,8 +34,16 @@ gitops:
     owner: "{{ .Environments.production.owner }}"
     server: ""
 
+expose:
+  enabled: false
+
+cleanup:
+  enabled: false
+
 controllerbuild:
   enabled: true
+controllerteam:
+  enabled: false
 controllerworkflow:
   enabled: false
 jenkins:
@@ -51,7 +67,6 @@ jenkins-x-platform:
       tag: v0.7.1
   controllerbuild:
     enabled: true
-  dockerRegistry: gcr.io
   jenkins:
     Agent:
       PodTemplates:

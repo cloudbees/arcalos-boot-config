@@ -26,8 +26,8 @@ spec:
       apiVersion: jenkins.io/v1
       kind: Scheduler
       name: default-scheduler
-    dockerRegistryOrg: jenkins-x-infra
-    envOrganisation: jenkins-x
+    dockerRegistryOrg: "{{ .Values.gitops.dev.dockerRegistryOrg }}"
+    envOrganisation: "{{ .Values.gitops.dev.envOrganisation }}"
     gitServer: https://github.com
     helmTemplate: true
     importMode: YAML

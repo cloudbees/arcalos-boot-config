@@ -1,5 +1,11 @@
 JXBasicAuth: "{{ .Parameters.adminUser.username }}:{SHA}{{ .Parameters.adminUser.password | hashPassword }}"
 
+expose:
+  enabled: false
+
+cleanup:
+  enabled: false
+
 chartmuseum:
   env:
     secret:
@@ -10,16 +16,6 @@ nexus:
     defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
 
 PipelineSecrets:
-    DockerConfig: |-
-      {
-          "credHelpers": {
-              "gcr.io": "gcr",
-              "us.gcr.io": "gcr",
-              "eu.gcr.io": "gcr",
-              "asia.gcr.io": "gcr",
-              "staging-k8s.gcr.io": "gcr"
-          }
-      }
     GitCreds: "https://{{ .Parameters.pipelineUser.github.username }}:{{ .Parameters.pipelineUser.github.token }}@{{ .Parameters.pipelineUser.github.host }}"
     GithubToken: "{{ .Parameters.pipelineUser.github.token }}"
     MavenSettingsXML: |-
