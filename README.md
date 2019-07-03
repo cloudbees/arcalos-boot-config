@@ -1,7 +1,7 @@
 
-## Jenkins X Development Environment
+## Jenkins X Boot Configuration
 
-This repository contains the source code for the Jenkins X Development Environment using a new pure GitOps Pipeline approach for installing/configuration/upgrading Jenkins X.
+This repository contains the source code for [Jenkins X Boot configuration](https://jenkins-x.io/getting-started/boot/) so that you can setup, upgrade or configure your Jenkins X installation via GitOps.
 
 ## How to install...
 
