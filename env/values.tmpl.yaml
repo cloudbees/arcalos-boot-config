@@ -99,6 +99,9 @@ jenkins-x-platform:
   postinstalljob:
     enabled: "true"
 
+tekton:
+  webhook:
+    enabled: false
 
 JenkinsXGitHub:
   username: "{{ .Parameters.pipelineUser.github.username }}"
