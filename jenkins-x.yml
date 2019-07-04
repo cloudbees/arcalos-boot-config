@@ -54,7 +54,7 @@ pipelineConfig:
               - name: helm-build
                 dir: /workspace/source/env
                 command: jx
-                args: ['step','helm','apply', '--remote', '--name', 'jenkins-x']
+                args: ['step','helm','apply', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
               - name: verify-env
                 dir: /workspace/source/env
                 command: jx

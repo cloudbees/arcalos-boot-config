@@ -45,9 +45,13 @@ spec:
       - '*'
       owner: jenkins-x-quickstarts
     storageLocations:
-    - bucketUrl: gs://jx-prod-logs
-      classifier: default
-    - bucketUrl: gs://jx-prod-logs
+{{- if  .Values.storage.logs.url }}
+    - bucketUrl: {{ .Values.storage.logs.url }}
       classifier: logs
+{{- end }}
+{{- if  .Values.storage.reports.url }}
+    - bucketUrl: {{ .Values.storage.reports.url }}
+      classifier: reports
+{{- end }}
     useGitOps: true
   webHookEngine: Prow

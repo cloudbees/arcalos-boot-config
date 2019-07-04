@@ -34,6 +34,14 @@ gitops:
     owner: "{{ .Environments.production.owner }}"
     server: ""
 
+storage:
+  logs:
+    url: "{{ .Requirements.storage.logs.url }}"
+  reports:
+    url: "{{ .Requirements.storage.reports.url }}"
+  repository:
+    url: "{{ .Requirements.storage.repository.url }}"
+
 expose:
   enabled: false
 
