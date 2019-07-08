@@ -1,3 +1,4 @@
+{{- if .Values.monocular.enabled }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -19,3 +20,4 @@ spec:
           serviceName: jenkins-x-monocular-ui
           servicePort: 80
         path: /
+{{- end }}
