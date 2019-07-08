@@ -16,9 +16,9 @@ gitops:
     repo: "{{ .Environments.dev.repository }}"
     owner: "{{ .Environments.dev.owner }}"
     server: ""
-    envOrganisation: "{{ .Requirements.environmentGitOwner }}"
-{{- if eq .Requirements.provider "gke" }}
-    dockerRegistryOrg: "{{ .Requirements.project }}"
+    envOrganisation: "{{ .Requirements.cluster.environmentGitOwner }}"
+{{- if eq .Requirements.cluster.provider "gke" }}
+    dockerRegistryOrg: "{{ .Requirements.cluster.project }}"
 {{- else }}
     dockerRegistryOrg: ""
 {{- end }}
@@ -115,16 +115,10 @@ JenkinsXGitHub:
   username: "{{ .Parameters.pipelineUser.github.username }}"
   password: "{{ .Parameters.pipelineUser.github.token }}"
 
-external-dns:
-  sources:
-  - ingress
-  provider: google
-  google:
-    serviceAccount: external-dns
-  rbac:
-    create: "true"
-  domainFilters:
-  - "{{ .Parameters.domain }}"
+{{- if .Requirements.ingress.tls.enabled }}
+certmanager:
+  email:  "{{ .Parameters.email }}"
+{{- else }}
+  enabled: false
+{{- end }}
 
- certmanager:
-  email:  "{{ .Parameters.email }}" 
