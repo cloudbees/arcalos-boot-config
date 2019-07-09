@@ -40,6 +40,10 @@ pipelineConfig:
                 env:
                   - name: DEPLOY_NAMESPACE
                     value: cert-manager
+              - name: clean-cert-manager
+                dir: /workspace/source
+                command: kubectl
+                args: ['delete', 'issuers.certmanager.k8s.io,certificates.certmanager.k8s.io,challenges.certmanager.k8s.io,orders.certmanager.k8s.io', '--all']
               - name: cert-manager
                 dir: /workspace/source/systems/cm
                 command: jx
@@ -58,7 +62,7 @@ pipelineConfig:
               - name: verify-env
                 dir: /workspace/source/env
                 command: jx
-                args: ['step','verify','env', '-b']
+                args: ['step','verify','env']
               - name: log-repos
                 dir: /workspace/source/repositories
                 command: echo

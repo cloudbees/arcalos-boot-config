@@ -16,5 +16,9 @@ spec:
   tls:
   - hosts:
     - nexus{{ .Values.cluster.namespaceSubDomain }}{{ .Values.cluster.domain }}
-    secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}"
+{{- if eq .Values.certmanager.production "true" }}
+    secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}-p"
+{{- else }}
+    secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}-s"
+{{- end }}
 {{- end }}

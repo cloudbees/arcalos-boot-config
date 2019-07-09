@@ -12,3 +12,13 @@ spec:
       - backend:
           serviceName: jenkins-x-chartmuseum
           servicePort: 8080
+{{- if .Values.cluster.tls }}
+  tls:
+  - hosts:
+    - chartmuseum{{ .Values.cluster.namespaceSubDomain }}{{ .Values.cluster.domain }}
+{{- if eq .Values.certmanager.production "true" }}
+    secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}-p"
+{{- else }}
+    secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}-s"
+{{- end }}
+{{- end }}

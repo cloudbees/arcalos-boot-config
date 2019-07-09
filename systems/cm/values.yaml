@@ -1,7 +1,4 @@
 cert-manager:
-  ingressShim:
-    defaultIssuerKind: Issuer
-    defaultIssuerName: letsencrypt-staging
   rbac:
     create: true
   webhook:

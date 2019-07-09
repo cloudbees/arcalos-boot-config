@@ -115,10 +115,12 @@ JenkinsXGitHub:
   username: "{{ .Parameters.pipelineUser.github.username }}"
   password: "{{ .Parameters.pipelineUser.github.token }}"
 
-{{- if .Requirements.ingress.tls.enabled }}
+{{- if .Requirements.ingress.tls }}
 certmanager:
-  email:  "{{ .Parameters.email }}"
+  production: "{{ .Requirements.ingress.tls.production }}"
+{{- if .Requirements.ingress.tls.enabled }}
+  email:  "{{ .Requirements.ingress.tls.email }}"
 {{- else }}
   enabled: false
 {{- end }}
-
+{{- end }}
