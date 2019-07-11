@@ -13,10 +13,16 @@ gitops:
   owner: ""
 
   dev:
+    server: ""
+{{- if .Requirements.gitops }}
     repo: "{{ .Environments.dev.repository }}"
     owner: "{{ .Environments.dev.owner }}"
-    server: ""
     envOrganisation: "{{ .Requirements.cluster.environmentGitOwner }}"
+{{- else }}
+    repo: ""
+    owner: ""
+    envOrganisation: ""
+{{- end }}
 {{- if eq .Requirements.cluster.provider "gke" }}
     dockerRegistryOrg: "{{ .Requirements.cluster.project }}"
 {{- else }}

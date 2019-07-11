@@ -1,0 +1,20 @@
+{{- if eq .Requirements.webhook "lighthouse" }}
+enabled: true
+{{- else }}
+enabled: false
+{{- end }}
+
+hmacToken: "{{ .Parameters.prow.hmacToken }}"
+
+git:
+  kind: github
+  name: github
+  server: ""
+
+service:
+  name: hook
+  
+replicaCount: 1
+
+image:
+  repository: gcr.io/jenkinsxio/lighthouse
