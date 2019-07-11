@@ -4,6 +4,7 @@ cluster:
   project: ""
   provider: gke
   zone: ""
+gitops: false
 environments:
 - key: dev
 - key: staging
