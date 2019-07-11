@@ -23,7 +23,6 @@ spec:
     targetUrl: http://deck{{ .Values.cluster.namespaceSubDomain }}{{ .Values.cluster.domain }}
   plugins:
     entries:
-    - config-updater
     - approve
     - assign
     - blunderbuss
