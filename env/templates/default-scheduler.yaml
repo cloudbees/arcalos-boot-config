@@ -36,6 +36,8 @@ spec:
     - wip
     - heart
     - cat
+    - dog
+    - pony
     - override
   policy:
     protectTested: true
