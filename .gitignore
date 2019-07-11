@@ -6,3 +6,5 @@ charts/
 requirements.lock
 .DS_Store
 .idea
+parameters.yaml
+env/cluster/

@@ -16,9 +16,9 @@ gitops:
     repo: "{{ .Environments.dev.repository }}"
     owner: "{{ .Environments.dev.owner }}"
     server: ""
-    envOrganisation: "{{ .Requirements.environmentGitOwner }}"
-{{- if eq .Requirements.provider "gke" }}
-    dockerRegistryOrg: "{{ .Requirements.project }}"
+    envOrganisation: "{{ .Requirements.cluster.environmentGitOwner }}"
+{{- if eq .Requirements.cluster.provider "gke" }}
+    dockerRegistryOrg: "{{ .Requirements.cluster.project }}"
 {{- else }}
     dockerRegistryOrg: ""
 {{- end }}
@@ -114,3 +114,13 @@ tekton:
 JenkinsXGitHub:
   username: "{{ .Parameters.pipelineUser.github.username }}"
   password: "{{ .Parameters.pipelineUser.github.token }}"
+
+{{- if .Requirements.ingress.tls }}
+certmanager:
+  production: "{{ .Requirements.ingress.tls.production }}"
+{{- if .Requirements.ingress.tls.enabled }}
+  email:  "{{ .Requirements.ingress.tls.email }}"
+{{- else }}
+  enabled: false
+{{- end }}
+{{- end }}

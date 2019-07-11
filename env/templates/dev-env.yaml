@@ -44,7 +44,9 @@ spec:
       includes:
       - '*'
       owner: jenkins-x-quickstarts
+{{- if or .Values.storage.logs.url .Values.storage.reports.url }}
     storageLocations:
+{{- end }}
 {{- if  .Values.storage.logs.url }}
     - bucketUrl: {{ .Values.storage.logs.url }}
       classifier: logs
