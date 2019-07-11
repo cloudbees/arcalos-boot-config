@@ -36,7 +36,7 @@
           "type": "string",
           "format": "token",
           "title": "HMAC token, used to validate incoming webhooks from the Git Provider (e.g. GitHub)",
-          "description": "The HMAC token is used by the Git Provider to create a hash signature for each webhook, and by Jenkins X to validate that the signature is from a trusted source. It's normally best to have Jenkins X generate a token for you if you don't already have one. You'll need to save it and use it with all the webhooks configured in your git provider for Jenkins X."
+          "description": "The HMAC token is used by the Git Provider to create a hash signature for each webhook, and by Jenkins X to validate that the signature is from a trusted source. It's normally best to have Jenkins X generate a token for you if you don't already have one. You'll need to save it and use it with all the webhooks configured in your git provider for Jenkins X. For more detail see: https://en.wikipedia.org/wiki/HMAC"
         }
       }
     },
