@@ -134,13 +134,13 @@
                   "username": {
                     "type": "string",
                     "title": "Pipeline bot Git username",
-                    "description": "The Git user that will perform git operations inside a pipeline. This is normally a bot."
+                    "description": "The Git user that will perform git operations inside a pipeline. It should be a user within the Git organisation/owner where environment repositories will live. This is normally a bot."
                   },
                   "token": {
                     "type": "string",
                     "format": "token",
                     "title": "Pipeline bot Git token",
-                    "description": "A token for the Git user that will perform git operations inside a pipeline."
+                    "description": "A token for the Git user that will perform git operations inside a pipeline. This includes environment repository creation, and so this token should have full repository permissions."
                   }
                 }
               }
