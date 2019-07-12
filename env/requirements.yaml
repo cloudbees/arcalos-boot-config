@@ -3,10 +3,16 @@ dependencies:
   name: tekton
   repository: http://chartmuseum.jenkins-x.io
   version: 0.0.39
-- alias: prow
+- condition: prow.enabled
+  alias: prow
   name: prow
   repository: http://chartmuseum.jenkins-x.io
   version: 0.0.849
+- condition: lighthouse.enabled
+  alias: lighthouse
+  name: lighthouse
+  repository: http://chartmuseum.jenkins-x.io
+  version: 0.0.39
 - name: jenkins-x-platform
   repository: http://chartmuseum.jenkins-x.io
   version: 2.0.752
