@@ -3,7 +3,7 @@ sources:
 - ingress
 provider: google
 google:
-  serviceAccount: external-dns-gcp-sa
+  serviceAccountSecret: external-dns-gcp-sa
 rbac:
   create: "true"
 domainFilters:
