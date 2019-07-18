@@ -13,9 +13,9 @@ ingress:
   domain: ""
   externalDNS: false
   tls:
-    email: ""
-    enabled: false
-    production: false
+    email: "jrawlings@cloudbees.com"
+    enabled: true
+    production: true
 kaniko: true
 secretStorage: local
 storage:
