@@ -58,7 +58,7 @@ We can then use the new step to populate the `parameters.yaml` file via this com
 jx step create values --name parameters
 ```
 
-This uses the [parameters.schema.json](https://github.com/jstrachan/environment-simple-tekton/blob/master/env/parameters.schema.json) file which powers the UI.
+This uses the [parameters.schema.json](https://github.com/jenkins-x/jenkins-x-boot-config/blob/master/env/parameters.schema.json) file which powers the UI.
 
 So if you wanted to perform your own install from this git repo, just fork it, remove `env/parameters.yaml` and run the bootstrap command!
 
