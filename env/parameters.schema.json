@@ -51,17 +51,6 @@
       "type": "boolean",
       "title": "Do you want to configure a Docker Registry?",
       "description": "TODO"
-    },
-    "gpg": {
-      "type": "object",
-      "properties": {
-        "passphrase": {
-          "type": "string",
-          "format": "password",
-          "title": "GPG Passphrase",
-          "description": "for GPG signing artifacts with artifact repositories like Nexus"
-        }
-      }
     }
   },
   "allOf": [
