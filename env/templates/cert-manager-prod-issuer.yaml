@@ -13,14 +13,11 @@ spec:
     solvers:
       # ACME DNS-01 provider configurations
     - dns01:
-        # Here we define a list of DNS-01 providers that can solve DNS challenges
-        providers:
-          - name: jenkins-x-dns
-            clouddns:
-              # A secretKeyRef to a google cloud json service account
-              serviceAccountSecretRef:
-                name: external-dns-gcp-sa
-                key: credentials.json
-              # The project in which to update the DNS zone
-              project: "{{ .Values.cluster.projectID }}"
+        clouddns:
+          # The project in which to update the DNS zone
+          project: "{{ .Values.cluster.projectID }}"
+          # A secretKeyRef to a google cloud json service account
+          serviceAccountSecretRef:
+            name: external-dns-gcp-sa
+            key: credentials.json
 {{- end }}

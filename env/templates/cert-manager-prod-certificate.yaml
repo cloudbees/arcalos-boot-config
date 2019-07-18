@@ -9,7 +9,7 @@ spec:
     name: letsencrypt-prod
   commonName: "*.{{ .Values.cluster.domain }}"
   dnsNames:
-  - "*.{{ .Values.cluster.domain }}"
+  - "{{ .Values.cluster.domain }}"
   acme:
     config:
     - dns01:
