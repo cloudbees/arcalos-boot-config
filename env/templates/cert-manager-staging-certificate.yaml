@@ -16,4 +16,5 @@ spec:
         provider: jenkins-x-dns
       domains:
       - "*.{{ .Values.cluster.domain }}"
+      - "{{ .Values.cluster.domain }}"
 {{- end }}
