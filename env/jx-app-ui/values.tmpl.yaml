@@ -1,0 +1,9 @@
+ui:
+  sso:
+{{- if eq .Values.certmanager.production "true" }}
+    certIssuerName: letsencrypt-prod
+{{- else }}
+    certIssuerName: letsencrypt-staging
+{{- end }}
+    domain: "{{ .Requirements.ingress.domain }}"
+    oidcIssuerUrl: "https://{{ .Requirements.ingress.domain }}"
