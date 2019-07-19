@@ -10,11 +10,5 @@ spec:
   commonName: "*.{{ .Values.cluster.domain }}"
   dnsNames:
   - "{{ .Values.cluster.domain }}"
-  acme:
-    config:
-    - dns01:
-        provider: jenkins-x-dns
-      domains:
-      - "*.{{ .Values.cluster.domain }}"
-      - "{{ .Values.cluster.domain }}"
+  - "*.{{ .Values.cluster.domain }}"
 {{- end }}
