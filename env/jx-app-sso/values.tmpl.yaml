@@ -1,13 +1,13 @@
 sso-operator:
   dex:
-    grpcHost: "{{ .Parameters.dashboard.grpchost }}"
+    grpcHost: "{{ .Parameters.dashboardGrpchost }}"
 
 dex:
   domain: "{{ .Requirements.ingress.domain }}"
   connectors:
     github:
       config:
-        clientID: "{{ .Parameters.dashboard.auth.id }}"
-        clientSecret: "{{ .Parameters.dashboard.auth.secret }}"
+        clientID: "{{ .Parameters.dashboardAuthID }}"
+        clientSecret: "{{ .Parameters.dashboardAuthSecret }}"
         orgs:
-        - "{{ .Parameters.dashboard.auth.org }}"
+        - "{{ .Parameters.dashboardAuthOrg }}"
