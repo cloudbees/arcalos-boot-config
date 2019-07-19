@@ -59,7 +59,7 @@
       "type": "string",
       "title": "Dashboard auth org"
     },
-    "dashboardAuthGrpchost": {
+    "dashboardGrpchost": {
       "type": "string",
       "title": "Dex GRPC Host",
       "description": "TODO OK LETS DO THIS A BETTER WAY"
