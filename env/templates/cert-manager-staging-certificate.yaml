@@ -9,6 +9,5 @@ spec:
     name: letsencrypt-staging
   commonName: "*.{{ .Values.cluster.domain }}"
   dnsNames:
-  - "{{ .Values.cluster.domain }}"
   - "*.{{ .Values.cluster.domain }}"
 {{- end }}
