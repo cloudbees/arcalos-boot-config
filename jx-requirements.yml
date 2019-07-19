@@ -15,7 +15,7 @@ ingress:
   tls:
     email: "jrawlings@cloudbees.com"
     enabled: true
-    production: false
+    production: true
 kaniko: true
 secretStorage: local
 storage:

@@ -11,8 +11,12 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
+    - selector:
+        dnsNames:
+        - "*.{{ .Values.cluster.domain }}"
+        - "{{ .Values.cluster.domain }}"
       # ACME DNS-01 provider configurations
-    - dns01:
+      dns01:
         clouddns:
           # The project in which to update the DNS zone
           project: "{{ .Values.cluster.projectID }}"
