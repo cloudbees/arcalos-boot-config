@@ -3,7 +3,7 @@ sso-operator:
     grpcHost: "{{ .Parameters.dashboardGrpchost }}"
 
 dex:
-  domain: "{{ .Requirements.ingress.domain }}"
+  domain: "dex.{{ .Requirements.ingress.domain }}"
   connectors:
     github:
       config:
