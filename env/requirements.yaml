@@ -29,4 +29,4 @@ dependencies:
   version: 0.0.10
 - name: jx-app-ui
   repository: https://chartmuseum.jx.charts-demo.cloudbees.com
-  version: 0.0.788
+  version: 0.0.789

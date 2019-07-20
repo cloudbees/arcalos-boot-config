@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-  name: dashboard
+  name: ui
 spec:
   rules:
   - host: dashboard{{ .Values.cluster.namespaceSubDomain }}{{ .Values.cluster.domain }}
