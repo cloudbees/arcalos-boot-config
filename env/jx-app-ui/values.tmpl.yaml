@@ -2,4 +2,4 @@ ui:
   sso:
     certIssuerName: letsencrypt-prod
     domain: "{{ .Requirements.ingress.domain }}"
-    oidcIssuerUrl: "https://{{ .Requirements.ingress.domain }}"
+    oidcIssuerUrl: "https://dex-jx.{{ .Requirements.ingress.domain }}"
