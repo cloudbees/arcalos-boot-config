@@ -47,6 +47,14 @@ pipelineConfig:
                 env:
                   - name: DEPLOY_NAMESPACE
                     value: cert-manager
+              # - name: sso-operator
+              #   dir: /workspace/source/systems/sso
+              #   command: jx
+              #   args: ['step','helm','apply', '--remote']
+              # - name: verify-sso
+              #   dir: /workspace/source/env
+              #   command: jx
+              #   args: ['step','verify','env']
               - name: helm-populate-params
                 dir: /workspace/source/env
                 command: jx

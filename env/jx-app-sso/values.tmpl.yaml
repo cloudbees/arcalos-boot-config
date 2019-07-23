@@ -1,7 +1,6 @@
 sso-operator:
   dex:
-    grpcHost: "{{ .Parameters.dashboardGrpchost }}"
-
+    grpcHost: "dex.jx"
 dex:
   domain: "dex-jx.{{ .Requirements.ingress.domain }}"
   connectors:
