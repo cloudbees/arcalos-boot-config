@@ -24,10 +24,9 @@ dependencies:
 #  name: chartmuseum
 #  repository: http://chartmuseum.jenkins-x.io
 #  version: 1.1.4
-
 - name: jx-app-sso
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.13
+  version: 0.0.14
 - name: jx-app-ui
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   version: 0.0.792
