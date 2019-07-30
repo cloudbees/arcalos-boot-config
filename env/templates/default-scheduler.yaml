@@ -75,7 +75,8 @@ spec:
       queries:
       - excludedBranches: {}
         includedBranches: {}
-        labels: {}
+        labels:
+        - approved
         milestone: ""
         missingLabels:
           entries:
