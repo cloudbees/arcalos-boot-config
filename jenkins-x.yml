@@ -60,7 +60,7 @@ pipelineConfig:
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
               - name: verify-env
-                dir: /workspace/source/env
+                dir: /workspace/source
                 command: jx
                 args: ['step','verify','env']
               - name: log-repos
