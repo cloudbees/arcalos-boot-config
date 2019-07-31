@@ -1,32 +1,26 @@
 dependencies:
-- alias: tekton
-  name: tekton
-  repository: http://chartmuseum.jenkins-x.io
-  version: 0.0.39
-- condition: prow.enabled
-  alias: prow
-  name: prow
-  repository: http://chartmuseum.jenkins-x.io
-  version: 0.0.849
-- condition: lighthouse.enabled
-  alias: lighthouse
-  name: lighthouse
-  repository: http://chartmuseum.jenkins-x.io
-  version: 0.0.39
-- name: jenkins-x-platform
-  repository: http://chartmuseum.jenkins-x.io
-  version: 2.0.752
-- condition: external-dns.enabled
-  name: external-dns
-  repository: https://charts.bitnami.com/bitnami
-  version: 1.5.2
+  - alias: tekton
+    name: tekton
+    repository: http://chartmuseum.jenkins-x.io
+  - condition: prow.enabled
+    alias: prow
+    name: prow
+    repository: http://chartmuseum.jenkins-x.io
+  - condition: lighthouse.enabled
+    alias: lighthouse
+    name: lighthouse
+    repository: http://chartmuseum.jenkins-x.io
+  - name: jenkins-x-platform
+    repository: http://chartmuseum.jenkins-x.io
+  - condition: external-dns.enabled
+    name: external-dns
+    repository: https://charts.bitnami.com/bitnami
 #- condition: chartmuseum.enabled
 #  name: chartmuseum
 #  repository: http://chartmuseum.jenkins-x.io
-#  version: 1.1.4
-- name: jx-app-sso
-  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.14
-- name: jx-app-ui
-  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.792
+  - name: jx-app-sso
+    repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+    version: 0.0.14
+  - name: jx-app-ui
+    repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+    version: 0.0.792

@@ -19,8 +19,8 @@ nexus:
     defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
 
 PipelineSecrets:
-    GitCreds: "https://{{ .Parameters.pipelineUser.github.username }}:{{ .Parameters.pipelineUser.github.token }}@{{ .Parameters.pipelineUser.github.host }}"
-    GithubToken: "{{ .Parameters.pipelineUser.github.token }}"
+    GitCreds: https://{{ .Parameters.pipelineUser.username }}:{{ .Parameters.pipelineUser.token }}@{{ trimPrefix "https://" .Requirements.cluster.gitServer | default "https://github.com" |  }}
+    GithubToken: "{{ .Parameters.pipelineUser.token }}"
     MavenSettingsXML: |-
         <settings>
             <localRepository>/home/jenkins/.mvnrepository</localRepository>

@@ -15,7 +15,7 @@ spec:
 {{- if  and .Values.gitops.dev.repo .Values.gitops.dev.owner }}
   source:
     ref: master
-    url: "{{ .Values.gitops.dev.server | default .Values.gitops.server }}/{{ .Values.gitops.dev.owner }}/{{ .Values.gitops.dev.repo }}.git"
+    url: "{{ .Values.gitops.dev.server | default .Values.gitops.server }}{{ .Values.gitops.gitUrlPathPrefix}}/{{ .Values.gitops.dev.owner }}/{{ .Values.gitops.dev.repo }}.git"
 {{- end }}
   teamSettings:
     appsRepository: http://chartmuseum.jenkins-x.io
@@ -55,5 +55,7 @@ spec:
     - bucketUrl: {{ .Values.storage.reports.url }}
       classifier: reports
 {{- end }}
+    versionStreamUrl: "{{ .Values.gitops.versionStreamUrl }}"
+    versionStreamRef: "{{ .Values.gitops.versionStreamRef }}"
     useGitOps: true
-  webHookEngine: Prow
+  webHookEngine: "{{ .Values.gitops.webhook }}"

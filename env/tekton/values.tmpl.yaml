@@ -3,8 +3,9 @@ webhook:
 
 auth:
   git:
-    username: "{{ .Parameters.pipelineUser.github.username }}"
-    password: "{{ .Parameters.pipelineUser.github.token }}"
+    username: "{{ .Parameters.pipelineUser.username }}"
+    password: "{{ .Parameters.pipelineUser.token }}"
+    url: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
 
 {{- if hasKey .Parameters "docker" }}
 docker:
