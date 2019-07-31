@@ -1,19 +1,19 @@
 {{- if eq .Requirements.webhook "lighthouse" }}
 enabled: true
-{{- else }}
+  {{- else }}
 enabled: false
-{{- end }}
+  {{- end }}
 
 hmacToken: "{{ .Parameters.prow.hmacToken }}"
 
 git:
-  kind: github
-  name: github
-  server: ""
+  kind: {{ .Requirements.cluster.gitKind | default "github" }}
+  name: {{ .Requirements.cluster.gitName | default "github" }}
+  server: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
 
 service:
   name: hook
-  
+
 replicaCount: 1
 
 image:
