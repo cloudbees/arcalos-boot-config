@@ -1,16 +1,29 @@
 cluster:
-  domain: ""
-  namespaceSubDomain: ""
+  domain: {{ .Requirements.ingress.domain }}
+  namespace: {{ .Requirements.cluster.namespace | default "jx" }}
+  namespaceSubDomain: {{ .Requirements.ingress.namespaceSubDomain | default ".jx." }}
+  projectID: {{ .Requirements.cluster.project }}
+  zone:  {{ .Requirements.cluster.zone }}
   name: ""
-  projectID: ""
   serverUrl: ""
-  zone: ""
-  tls: false
+{{- if .Requirements.ingress.tls.enabled }}
+  tls: true
+{{- end }}
 
 gitops:
-  gitKind: github
-  server: https://github.com
-  owner: ""
+  versionStreamUrl: {{ .Requirements.versionStream.url }}
+  versionStreamRef: {{ .Requirements.versionStream.ref }}
+
+  gitKind: {{ .Requirements.cluster.gitKind | default "github" }}
+  gitName: {{ .Requirements.cluster.gitName | default "github" }}
+  server: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
+  owner: {{ .Requirements.cluster.environmentGitOwner }}
+  webhook: {{ .Requirements.webhook | default "prow" | title | quote }}
+{{- if eq .Requirements.cluster.gitKind "bitbucketserver" }}
+  gitUrlPathPrefix: "/scm"
+{{- else }}
+  gitUrlPathPrefix: ""
+{{- end }}
 
   dev:
     server: ""
@@ -32,12 +45,12 @@ gitops:
 
   staging:
     repo: "{{ .Environments.staging.repository }}"
-    owner: "{{ .Environments.staging.owner }}"
+    owner: "{{ .Environments.staging.owner | default .Requirements.cluster.environmentGitOwner }}"
     server: ""
 
   production:
     repo: "{{ .Environments.production.repository }}"
-    owner: "{{ .Environments.production.owner }}"
+    owner: "{{ .Environments.production.owner | default .Requirements.cluster.environmentGitOwner }}"
     server: ""
 
 storage:
@@ -47,6 +60,13 @@ storage:
     url: "{{ .Requirements.storage.reports.url }}"
   repository:
     url: "{{ .Requirements.storage.repository.url }}"
+
+
+{{- if .Requirements.versionStream.url }}
+versionStream:
+  url: "{{ .Requirements.versionStream.url }}"
+  ref: "{{ .Requirements.versionStream.ref }}"
+{{- end }}
 
 expose:
   enabled: false
@@ -118,8 +138,8 @@ tekton:
     enabled: false
 
 JenkinsXGitHub:
-  username: "{{ .Parameters.pipelineUser.github.username }}"
-  password: "{{ .Parameters.pipelineUser.github.token }}"
+  username: "{{ .Parameters.pipelineUser.username }}"
+  password: "{{ .Parameters.pipelineUser.token }}"
 
 {{- if .Requirements.ingress.tls }}
 certmanager:

@@ -7,9 +7,12 @@ metadata:
     jenkins.io/gitSync: "false"
 spec:
   provider: "{{ .Values.gitops.staging.server | default .Values.gitops.server }}"
-  providerName: '{{ .Values.gitops.gitKind | default "github" }}'
+  providerName: '{{ .Values.gitops.gitName | default .Values.gitops.gitKind | default "github" }}'
+  providerKind: '{{ .Values.gitops.gitKind | default "github" }}'
   org: "{{ .Values.gitops.staging.owner | default .Values.gitops.owner }}"
   repo: "{{ .Values.gitops.staging.repo }}"
+  url: "{{ .Values.gitops.staging.server | default .Values.gitops.server }}{{ .Values.gitops.gitUrlPathPrefix}}/{{ .Values.gitops.staging.owner | default .Values.gitops.owner }}/{{ .Values.gitops.staging.repo }}.git"
+  httpCloneURL: "{{ .Values.gitops.staging.server | default .Values.gitops.server }}{{ .Values.gitops.gitUrlPathPrefix}}/{{ .Values.gitops.staging.owner | default .Values.gitops.owner }}/{{ .Values.gitops.staging.repo }}.git"
   description: "the git repository for the Staging environment"
   scheduler:
     kind: Scheduler

@@ -14,5 +14,5 @@ spec:
   promotionStrategy: Manual
   source:
     ref: master
-    url: "{{ .Values.gitops.production.server | default .Values.gitops.server }}/{{ .Values.gitops.production.owner | default .Values.gitops.owner }}/{{ .Values.gitops.production.repo }}.git"
+    url: "{{ .Values.gitops.production.server | default .Values.gitops.server }}{{ .Values.gitops.gitUrlPathPrefix}}/{{ .Values.gitops.production.owner | default .Values.gitops.owner }}/{{ .Values.gitops.production.repo }}.git"
 {{- end }}
