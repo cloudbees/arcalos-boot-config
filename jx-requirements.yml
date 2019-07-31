@@ -20,10 +20,10 @@ kaniko: true
 secretStorage: local
 storage:
   logs:
-    enabled: false
+    enabled: true
     url: ""
   reports:
-    enabled: false
+    enabled: true
     url: ""
   repository:
     enabled: false
