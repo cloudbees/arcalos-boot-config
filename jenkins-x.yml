@@ -11,10 +11,10 @@ pipelineConfig:
         stages:
           - name: release
             steps:
-              - name: validate-git
-                dir: /workspace/source/env
-                command: jx
-                args: ['step','git','validate']
+#              - name: validate-git
+#                dir: /workspace/source/env
+#                command: jx
+#                args: ['step','git','validate']
               - name: verify-preinstall
                 dir: /workspace/source/env
                 command: jx
