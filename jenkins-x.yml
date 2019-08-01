@@ -32,7 +32,7 @@ pipelineConfig:
               - name: helm-cluster-values
                 dir: /workspace/source/env
                 command: jx
-                args: ['step','create','install', 'values', '-b', '--lazy-create=true']
+                args: ['step','create','install', 'values', '-b', '--lazy-create=true', '--verbose']
               - name: install-vault
                 dir: /workspace/source/systems/vault
                 command: jx
