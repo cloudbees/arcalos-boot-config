@@ -18,7 +18,7 @@ pipelineConfig:
               - name: verify-preinstall
                 dir: /workspace/source/env
                 command: jx
-                args: ['step','verify','preinstall','--verbose', '--lazy-create=true']
+                args: ['step','verify','preinstall','--verbose', '--lazy-create=true', '--workload-identity=true']
               - name: jx-crds
                 command: jx
                 args: ['upgrade','crd']
