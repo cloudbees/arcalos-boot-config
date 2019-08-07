@@ -2,8 +2,16 @@ cluster:
   domain: {{ .Requirements.ingress.domain }}
   namespace: {{ .Requirements.cluster.namespace | default "jx" }}
   namespaceSubDomain: {{ .Requirements.ingress.namespaceSubDomain | default ".jx." }}
+{{- if hasKey .Requirements.cluster "project" }}
   projectID: {{ .Requirements.cluster.project }}
+{{- else }}
+  projectID: ""
+{{- end }}
+{{- if hasKey .Requirements.cluster "zone" }}
   zone:  {{ .Requirements.cluster.zone }}
+{{- else }}
+  zone: ""
+{{- end }}
   name: ""
   serverUrl: ""
 {{- if .Requirements.ingress.tls.enabled }}
