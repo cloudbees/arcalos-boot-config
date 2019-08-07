@@ -98,6 +98,6 @@ spec:
     ignoreOkToTest: false
     joinOrgUrl: ""
     onlyOrgMembers: false
-    trustedOrg: cb-kubecd
+    trustedOrg: {{ .Values.gitops.owner }}
   welcome:
   - message_template: Welcome
