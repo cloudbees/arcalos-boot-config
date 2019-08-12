@@ -5,7 +5,7 @@ init:
 	helm repo add stable https://kubernetes-charts.storage.googleapis.com
 
 build: clean init
-	jx step helm build
+	jx step helm build --boot --provider-values-dir=../kubeProviders
 	helm lint .
 
 clean: 
