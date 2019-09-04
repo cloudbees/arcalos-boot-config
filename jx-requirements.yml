@@ -17,7 +17,7 @@ ingress:
     enabled: true
     production: false
 kaniko: true
-secretStorage: vault
+secretStorage: local
 storage:
   logs:
     enabled: false
