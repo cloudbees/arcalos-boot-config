@@ -13,17 +13,17 @@ ingress:
   domain: ""
   externalDNS: false
   tls:
-    email: "jrawlings@cloudbees.com"
+    email: jenkins-x@cloudbees.com
     enabled: true
     production: false
 kaniko: true
-secretStorage: local
+secretStorage: vault
 storage:
   logs:
-    enabled: true
+    enabled: false
     url: ""
   reports:
-    enabled: true
+    enabled: false
     url: ""
   repository:
     enabled: false
