@@ -85,6 +85,7 @@ spec:
           - do-not-merge/work-in-progress
           - needs-ok-to-test
           - needs-rebase
+          - needs-security-review
         reviewApprovedRequired: false
       - excludedBranches: {}
         includedBranches: {}
@@ -99,6 +100,7 @@ spec:
           - do-not-merge/work-in-progress
           - needs-ok-to-test
           - needs-rebase
+          - needs-security-review
         reviewApprovedRequired: false
       report: true
       rerunCommand: /test this

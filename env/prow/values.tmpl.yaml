@@ -11,8 +11,21 @@ user: "{{ .Parameters.pipelineUser.username }}"
 buildnum:
   enabled: false
 pipelinerunner:
+  args:
+  - controller
+  - pipelinerunner
+  - --use-meta-pipeline=false
   enabled: "true"
+  image:
+    repository: gcr.io/jenkinsxio/builder-maven
+    tag: 0.1.672
 tillerNamespace: ""
 
 sinker:
   replicaCount: 0
+
+pipeline:
+  image:
+    repository: gcr.io/jenkinsxio/prow/pipeline
+    tag: v20190826-3976f61
+

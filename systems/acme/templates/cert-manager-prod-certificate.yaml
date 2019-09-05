@@ -1,3 +1,4 @@
+{{- if .Values.certmanager.enabled }}
 {{- if eq .Values.certmanager.production "true" }}
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
@@ -10,4 +11,5 @@ spec:
   commonName: "*.{{ .Values.cluster.domain }}"
   dnsNames:
   - "*.{{ .Values.cluster.domain }}"
+{{- end }}
 {{- end }}

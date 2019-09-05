@@ -1,0 +1,14 @@
+cluster:
+  domain: {{ .Requirements.ingress.domain }}
+{{- if hasKey .Requirements.cluster "project" }}
+  projectID: {{ .Requirements.cluster.project }}
+{{- else }}
+  projectID: ""
+{{- end }}
+
+ {{- if .Requirements.ingress.tls }}
+certmanager:
+  production: "{{ .Requirements.ingress.tls.production }}"
+  email:  "{{ .Requirements.ingress.tls.email }}"
+  enabled: {{ .Requirements.ingress.tls.enabled }}
+{{- end }}

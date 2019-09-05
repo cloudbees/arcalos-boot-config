@@ -145,3 +145,13 @@ certmanager:
 
 sso:
   enabled: true
+
+# not used yet
+ui:
+  skipExposeService: true
+  sso:
+    create: true
+    certIssuerName: letsencrypt-prod
+    domain: "{{ .Requirements.ingress.domain }}"
+    oidcIssuerUrl: "https://dex-jx.{{ .Requirements.ingress.domain }}"
+

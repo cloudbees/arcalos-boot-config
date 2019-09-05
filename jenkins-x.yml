@@ -19,43 +19,51 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','verify','preinstall','--verbose', '--lazy-create=true', '--workload-identity=true']
-              - name: jx-crds
+              - name: install-jx-crds
                 command: jx
                 args: ['upgrade','crd']
-              - name: kube-system
+              - name: install-nginx
                 dir: /workspace/source/systems/jxing
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jxing']
                 env:
                   - name: DEPLOY_NAMESPACE
                     value: kube-system
-              - name: helm-cluster-values
+              - name: create-install-values
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','create','install', 'values', '-b', '--lazy-create=true', '--verbose']
-              - name: install-vault
-                dir: /workspace/source/systems/vault
+              - name: install-external-dns
+                dir: /workspace/source/systems/external-dns
                 command: jx
-                args: ['step', 'boot','vault']
-              - name: cert-manager-crds
+                args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jx']
+              - name: install-cert-manager-crds
                 dir: /workspace/source
                 command: kubectl
                 args: ['apply', '--wait', '--validate=true', '-f', 'https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml']
                 env:
                   - name: DEPLOY_NAMESPACE
                     value: cert-manager
-              - name: cert-manager
+              - name: install-cert-manager
                 dir: /workspace/source/systems/cm
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jx']
                 env:
                   - name: DEPLOY_NAMESPACE
                     value: cert-manager
+              - name: install-acme-issuer-and-certificate
+                dir: /workspace/source/systems/acme
+                command: jx
+                args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jx']
+              - name: install-vault
+                dir: /workspace/source/systems/vault
+                command: jx
+                args: ['step', 'boot','vault']
               - name: helm-populate-params
                 dir: /workspace/source/env
                 command: jx
                 args: ['step', 'create', 'values', '--name', 'parameters']
-              - name: helm-build
+              - name: install-env
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']

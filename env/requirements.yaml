@@ -12,9 +12,6 @@ dependencies:
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
 - name: jenkins-x-platform
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-- condition: external-dns.enabled
-  name: external-dns
-  repository: https://charts.bitnami.com/bitnami
 - name: jx-app-sso
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   version: 0.0.14

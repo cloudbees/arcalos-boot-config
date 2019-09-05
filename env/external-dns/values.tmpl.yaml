@@ -1,9 +1,0 @@
-enabled: {{ .Requirements.ingress.externalDNS }}
-sources:
-- ingress
-provider: google
-rbac:
-  create: false
-  serviceAccountName: "{{ .Requirements.cluster.externalDNSSAName }}"
-domainFilters:
-- "{{ .Requirements.ingress.domain }}"
