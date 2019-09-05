@@ -142,3 +142,6 @@ certmanager:
   enabled: false
 {{- end }}
 {{- end }}
+
+sso:
+  enabled: true
