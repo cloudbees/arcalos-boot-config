@@ -1,7 +1,11 @@
 # Override configuration from https://github.com/jenkins-x/jenkins-x-platform/blob/master/jenkins-x-platform/values.yaml
 
 jenkins-x-platform:
+{{- if eq .Requirements.webhook "jenkins" }}
+  dockerRegistry: ""
+{{- else }}
   dockerRegistry: gcr.io
+{{- end }}
 
   PipelineSecrets:
 
@@ -18,5 +22,9 @@ jenkins-x-platform:
       }
 
 docker-registry:
+{{- if eq .Requirements.webhook "jenkins" }}
+  enabled: true
+{{- else }}
   enabled: false
+{{- end }}
 

@@ -3,9 +3,6 @@ expose:
 
 JXBasicAuth: "{{ .Parameters.adminUser.username }}:{SHA}{{ .Parameters.adminUser.password | hashPassword }}"
 
-expose:
-  enabled: false
-
 cleanup:
   enabled: false
 
@@ -28,7 +25,11 @@ chartmuseum:
       memory: 256Mi
 
 nexus:
-    defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
+  defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
+
+jenkins:
+  Master:
+    AdminPassword: "{{ .Parameters.adminUser.password }}"
 
 PipelineSecrets:
     GitCreds: https://{{ .Parameters.pipelineUser.username }}:{{ .Parameters.pipelineUser.token }}@{{ trimPrefix "https://" .Requirements.cluster.gitServer | default "https://github.com" |  }}

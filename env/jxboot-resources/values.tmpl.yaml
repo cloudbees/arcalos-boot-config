@@ -26,7 +26,7 @@ gitops:
   gitName: {{ .Requirements.cluster.gitName | default "github" }}
   server: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
   owner: {{ .Requirements.cluster.environmentGitOwner }}
-  webhook: {{ .Requirements.webhook | default "prow" | title | quote }}
+  webhook: {{ .Requirements.webhook | default "prow" | quote }}
 {{- if eq .Requirements.cluster.gitKind "bitbucketserver" }}
   gitUrlPathPrefix: "/scm"
 {{- else }}
@@ -69,13 +69,6 @@ storage:
   repository:
     url: "{{ .Requirements.storage.repository.url }}"
 
-
-{{- if .Requirements.versionStream.url }}
-versionStream:
-  url: "{{ .Requirements.versionStream.url }}"
-  ref: "{{ .Requirements.versionStream.ref }}"
-{{- end }}
-
 expose:
   enabled: false
 
@@ -91,6 +84,22 @@ controllerworkflow:
 jenkins:
   enabled: false
 jenkins-x-platform:
+  chartmuseum:
+    enabled: true
+    env:
+      open:
+        AUTH_ANONYMOUS_GET: true
+        DISABLE_API: false
+#        STORAGE: google
+#        STORAGE_GOOGLE_BUCKET: chartmuseum.jenkins-x.io
+#        STORAGE_GOOGLE_PREFIX: charts
+#    gcp:
+#      secret:
+#        enabled: true
+#        key: gcs-chartmuseum.key.json
+#        name: gcs-jenkinsx-chartmuseum
+    image:
+      tag: v0.7.1
   controllerbuild:
     enabled: true
   jenkins:
@@ -142,16 +151,3 @@ certmanager:
   enabled: false
 {{- end }}
 {{- end }}
-
-sso:
-  enabled: true
-
-# not used yet
-ui:
-  skipExposeService: true
-  sso:
-    create: true
-    certIssuerName: letsencrypt-prod
-    domain: "{{ .Requirements.ingress.domain }}"
-    oidcIssuerUrl: "https://dex-jx.{{ .Requirements.ingress.domain }}"
-

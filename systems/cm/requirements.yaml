@@ -1,4 +1,5 @@
 dependencies:
 - alias: cert-manager
+  condition: cert-manager.enabled
   name: cert-manager
   repository: https://charts.jetstack.io
