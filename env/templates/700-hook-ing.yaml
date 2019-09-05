@@ -1,4 +1,4 @@
-{{- if .Values.prow.enabled }}
+{{- if or .Values.prow.enabled .Values.lighthouse.enabled }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

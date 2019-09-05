@@ -93,7 +93,7 @@ pipelineConfig:
         agent:
           image: gcr.io/jenkinsxio/builder-go
         stages:
-          - name: release
+          - name: pr
             steps:
               - name: helm-build
                 dir: /workspace/source/env

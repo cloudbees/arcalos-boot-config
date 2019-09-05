@@ -1,0 +1,13 @@
+apiVersion: jenkins.io/v1
+kind: App
+metadata:
+  annotations:
+    jenkins.io/chart-description: A Helm chart for replicating secrets and configmaps
+      across Kubernetes namespaces
+    jenkins.io/chart-repository: http://chartmuseum.jenkins-x.io
+  creationTimestamp: null
+  labels:
+    jenkins.io/app-name: jx-app-replicator
+    jenkins.io/app-version: 1.0.14
+  name: jx-app-replicator
+spec: {}

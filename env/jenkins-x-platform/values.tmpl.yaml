@@ -11,9 +11,21 @@ cleanup:
 
 chartmuseum:
   env:
+    open:
+      AUTH_ANONYMOUS_GET: true
+      DISABLE_API: false
     secret:
       BASIC_AUTH_USER: "{{ .Parameters.adminUser.username }}"
       BASIC_AUTH_PASS: "{{ .Parameters.adminUser.password }}"
+  image:
+    tag: v0.7.1
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+    requests:
+      cpu: 320m
+      memory: 256Mi
 
 nexus:
     defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
@@ -115,3 +127,33 @@ PipelineSecrets:
             User git
             IdentityFile /root/.ssh-git/ssh-key
             StrictHostKeyChecking no
+
+{{- if eq .Requirements.webhook "lighthouse" }}
+controllerbuild:
+  enabled: true
+  args:
+  - "controller"
+  - "build"
+  - "--git-reporting"
+  - "--batch-mode"
+  - "--git-credentials"
+  - "--verbose"
+{{- end }}
+
+gcactivities:
+  args:
+    - "gc"
+    - "activities"
+    - "--batch-mode"
+    - "--pr-history-limit=30"
+  cronjob:
+    enabled: true
+    schedule: "0/30 * * * *"
+  image:
+    repository: gcr.io/jenkinsxio/builder-jx
+    tag: 0.1.699
+
+gcpods:
+  cronjob:
+    enabled: true
+    schedule: "0/30 * * * *"
