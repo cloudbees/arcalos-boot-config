@@ -160,7 +160,7 @@ lighthouse:
 {{- end }}
 
 prow:
-{{- if eq .Requirements.webhook "lighthouse" }}
+{{- if eq .Requirements.webhook "prow" }}
   enabled: true
 {{- else }}
   enabled: false
