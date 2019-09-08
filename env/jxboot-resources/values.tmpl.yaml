@@ -151,3 +151,18 @@ certmanager:
   enabled: false
 {{- end }}
 {{- end }}
+
+lighthouse:
+{{- if eq .Requirements.webhook "lighthouse" }}
+  enabled: true
+{{- else }}
+  enabled: false
+{{- end }}
+
+prow:
+{{- if eq .Requirements.webhook "prow" }}
+  enabled: true
+{{- else }}
+  enabled: false
+{{- end }}
+
