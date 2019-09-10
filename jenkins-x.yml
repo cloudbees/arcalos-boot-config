@@ -19,6 +19,10 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','verify','preinstall','--verbose', '--lazy-create=true', '--workload-identity=true']
+              - name: get-subdomain
+                dir: /workspace/source/env
+                command: jx
+                args: ['step','get','subdomain', '-b', '--verbose']
               - name: install-jx-crds
                 command: jx
                 args: ['upgrade','crd']
