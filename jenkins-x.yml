@@ -16,7 +16,7 @@ pipelineConfig:
                 command: jx
                 args: ['step','git','validate']
               - name: debug-requirements-a
-                dir: /workspace/source/env
+                dir: /workspace/source
                 command: cat
                 args: ['jx-requirements.yml']
               - name: override-requirements
@@ -24,7 +24,7 @@ pipelineConfig:
                 command: jx
                 args: ['step','override-requirements','-b', '--verbose']
               - name: debug-requirements-b
-                dir: /workspace/source/env
+                dir: /workspace/source
                 command: cat
                 args: ['jx-requirements.yml']
               - name: verify-preinstall
