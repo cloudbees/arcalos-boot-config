@@ -15,6 +15,10 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','git','validate']
+              - name: override-requirements
+                dir: /workspace/source/env
+                command: jx
+                args: ['step','override-requirements','-b', '--verbose']
               - name: verify-preinstall
                 dir: /workspace/source/env
                 command: jx
