@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    jenkins-x.io/created-by: Jenkins X
+  labels:
+    env: production
+    certmanager.k8s.io/disable-validation: true
+  name: jx-production
+spec:
+  finalizers:
+  - kubernetes
