@@ -4,14 +4,14 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     helm.sh/hook: pre-install,pre-upgrade
-  name: {{ .Requirements.cluster.vaultName }}
+  name: {{ .Requirements.vault.name }}
 spec:
   rules:
   - host: vault{{ .Requirements.ingress.namespaceSubDomain | default ".jx." }}{{ .Requirements.ingress.domain }}
     http:
       paths:
       - backend:
-          serviceName: {{ .Requirements.cluster.vaultName }}
+          serviceName: {{ .Requirements.vault.name }}
           servicePort: 8200
 {{- if .Requirements.ingress.tls.enabled }}
   tls:

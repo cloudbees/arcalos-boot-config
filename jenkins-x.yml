@@ -15,10 +15,18 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','git','validate']
+              - name: override-requirements
+                dir: /workspace/source/env
+                command: jx
+                args: ['step','override-requirements','-b', '--verbose']
               - name: verify-preinstall
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','verify','preinstall','--verbose', '--lazy-create=true', '--workload-identity=true']
+              - name: get-subdomain
+                dir: /workspace/source/env
+                command: jx
+                args: ['step','get','subdomain', '-b', '--verbose']
               - name: install-jx-crds
                 command: jx
                 args: ['upgrade','crd']
@@ -58,7 +66,7 @@ pipelineConfig:
               - name: install-vault
                 dir: /workspace/source/systems/vault
                 command: jx
-                args: ['step', 'boot','vault']
+                args: ['step', 'boot','vault','--verbose']
               - name: helm-populate-params
                 dir: /workspace/source/env
                 command: jx
@@ -96,6 +104,10 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','verify','install', '--pod-wait-time', '30m']
+              - name: replicate-secrets
+                dir: /workspace/source/env
+                command: jx
+                args: ['step','replicate', 'secret', 'tls-cb-aps-poc-consumer.*', '-r', 'jx-staging', '-r', 'jx-production', '--create-namespace']
     pullRequest:
       pipeline:
         agent:
