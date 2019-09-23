@@ -1,0 +1,13 @@
+apiVersion: jenkins.io/v1
+kind: App
+metadata:
+  annotations:
+    jenkins.io/chart-description: The Kuberhealthy App for Jenkins X
+    jenkins.io/chart-repository: http://chartmuseum.jenkins-x.io
+  creationTimestamp: null
+  labels:
+    chart: jx-app-kuberhealthy-0.0.2
+    jenkins.io/app-name: jx-app-kuberhealthy
+    jenkins.io/app-version: 0.0.2
+  name: jx-app-kuberhealthy-jx-app-kuberhealthy
+spec: {}

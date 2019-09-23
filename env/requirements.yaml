@@ -23,3 +23,6 @@ dependencies:
 - name: jx-app-ui
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   version: 0.0.792
+- name: jx-app-kuberhealthy
+  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  version: 0.0.2
