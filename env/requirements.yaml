@@ -16,10 +16,11 @@ dependencies:
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
 - name: jx-app-sso
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.14
+  version: 0.0.15
 - name: jx-app-replicator
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   version: 1.0.14
-- name: jx-app-ui
-  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.792
+- alias: ui
+  name: jxui
+  repository: https://charts.cloudbees.com/cjxd/cloudbees
+  version: 0.0.859
