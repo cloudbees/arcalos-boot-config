@@ -6,7 +6,7 @@ cluster:
   projectID: ""
 {{- end }}
 
- {{- if .Requirements.ingress.tls }}
+{{- if .Requirements.ingress.tls }}
 certmanager:
   production: "{{ .Requirements.ingress.tls.production }}"
   email:  "{{ .Requirements.ingress.tls.email }}"

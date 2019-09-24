@@ -134,25 +134,37 @@ JenkinsXGitHub:
   email: "{{ .Parameters.pipelineUser.email }}"
   password: "{{ .Parameters.pipelineUser.token }}"
 
-{{- if .Requirements.ingress.tls }}
 certmanager:
+{{- if .Requirements.ingress.tls }}
   production: "{{ .Requirements.ingress.tls.production }}"
+{{- else }}
+  production: "false"
+{{- end }}
 {{- if .Requirements.ingress.tls.enabled }}
   email:  "{{ .Requirements.ingress.tls.email }}"
 {{- else }}
   enabled: false
 {{- end }}
-{{- end }}
 
 sso:
   enabled: true
 
-# not used yet
 ui:
+{{- if .Requirements.ingress.tls }}
+{{- if eq .Requirements.ingress.tls.production false }}
+  sslInsecureSkipVerify: true
+{{- end }}
+{{- end }}
   skipExposeService: true
   sso:
     create: true
+{{- if .Requirements.ingress.tls }}
+{{- if eq .Requirements.ingress.tls.production true }}
     certIssuerName: letsencrypt-prod
+{{- else }}
+    certIssuerName: letsencrypt-staging
+{{- end }}
+{{- end }}
     domain: "{{ .Requirements.ingress.domain }}"
     oidcIssuerUrl: "https://dex-jx.{{ .Requirements.ingress.domain }}"
 
