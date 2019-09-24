@@ -1,1 +1,5 @@
-kuberhealthy: {}
+kuberhealthy:
+  deployment:
+    args:
+    - -podCheckNamespaces
+    - jx,jx-staging,jx-production
