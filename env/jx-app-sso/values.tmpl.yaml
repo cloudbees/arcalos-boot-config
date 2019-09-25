@@ -4,9 +4,10 @@ sso-operator:
 dex:
   domain: "dex-jx.{{ .Requirements.ingress.domain }}"
   connectors:
-    github:
+    google:
       config:
+        type: oidc
+        name: Google
         clientID: "{{ .Parameters.dashboardAuthID }}"
         clientSecret: "{{ .Parameters.dashboardAuthSecret }}"
-        orgs:
-        - "{{ .Parameters.dashboardAuthOrg }}"
+        issuer: https://accounts.google.com
