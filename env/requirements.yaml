@@ -23,6 +23,8 @@ dependencies:
 - name: jx-app-kuberhealthy
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   version: 0.0.2
+  condition: jx-app-kuberhealthy.enabled
+  alias: jx-app-kuberhealthy
 - alias: ui
   name: jxui
   repository: https://charts.cloudbees.com/cjxd/cloudbees
