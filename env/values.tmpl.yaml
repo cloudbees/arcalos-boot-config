@@ -49,6 +49,7 @@ gitops:
 {{- else }}
     dockerRegistryOrg: ""
 {{- end }}
+    scheduler: dev-scheduler
 
 
   staging:
