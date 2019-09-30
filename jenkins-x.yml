@@ -1,6 +1,17 @@
 buildPack: none
 pipelineConfig:
   pipelines:
+    pullRequest:
+      pipeline:
+        agent:
+          image: gcr.io/jenkinsxio/builder-go
+        stages:
+          - name: pr
+            steps:
+              - name: helm-build
+                dir: /workspace/source/env
+                command: make
+                args: ['build']
     release:
       pipeline:
         agent:
@@ -108,15 +119,3 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','replicate', 'secret', 'tls-cb-aps-poc-consumer.*', '-r', 'jx-staging', '-r', 'jx-production', '--create-namespace']
-    pullRequest:
-      pipeline:
-        agent:
-          image: gcr.io/jenkinsxio/builder-go
-        stages:
-          - name: pr
-            steps:
-              - name: helm-build
-                dir: /workspace/source/env
-                command: make
-                args: ['build']
-
