@@ -1,3 +1,6 @@
+autoUpdate:
+  enabled: true
+  schedule: '0 0 * * *'
 cluster:
   clusterName: ""
   environmentGitOwner: ""
