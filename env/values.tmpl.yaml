@@ -159,6 +159,7 @@ ui:
   skipExposeService: true
   sso:
     create: true
+    connector: google
 {{- if .Requirements.ingress.tls }}
 {{- if eq .Requirements.ingress.tls.production true }}
     certIssuerName: letsencrypt-prod
