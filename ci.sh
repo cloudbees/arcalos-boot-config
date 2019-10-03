@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -e
+set -u
+set -o pipefail
+
 NAME=$1
 
 git clone https://github.com/cloudbees/arcalos
