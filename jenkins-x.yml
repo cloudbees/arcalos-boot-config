@@ -118,4 +118,4 @@ pipelineConfig:
               - name: replicate-secrets
                 dir: /workspace/source/env
                 command: jx
-                args: ['step','replicate', 'secret', 'tls-cb-aps-poc-consumer.*', '-r', 'jx-staging', '-r', 'jx-production', '--create-namespace']
+                args: ['step','replicate', 'secret', 'tls-aps-*', '-r', 'jx-staging', '-r', 'jx-production', '--create-namespace']
