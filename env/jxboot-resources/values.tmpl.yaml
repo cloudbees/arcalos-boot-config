@@ -24,7 +24,9 @@ gitops:
 
   gitKind: {{ .Requirements.cluster.gitKind | default "github" }}
   gitName: {{ .Requirements.cluster.gitName | default "github" }}
-  gitPublic: {{ .Requirements.cluster.gitPublic | default false }}
+{{- if hasKey .Requirements.cluster "gitPublic" }}  
+  gitPublic: {{ .Requirements.cluster.gitPublic }}
+{{- end }}  
   server: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
   owner: {{ .Requirements.cluster.environmentGitOwner }}
   webhook: {{ .Requirements.webhook | default "prow" | quote }}
