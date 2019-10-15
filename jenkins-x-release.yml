@@ -18,3 +18,5 @@ pipelineConfig:
                 - ${VERSION}
                 - --rev
                 - ${PULL_BASE_SHA}
+              - name: downstream
+                command: ./updatebot.sh
