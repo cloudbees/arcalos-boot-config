@@ -80,13 +80,3 @@ pipelineConfig:
           - name: ci
             command: ./ci.sh
             args: ['${BRANCH_NAME}-${BUILD_NUMBER}arc']
-    release:
-      pipeline:
-        agent:
-          image: busybox
-        stages:
-        - name: release
-          steps:
-          - name: dummy
-            command: echo
-            args: ['TBD']
