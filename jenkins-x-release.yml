@@ -1,0 +1,31 @@
+buildPack: none
+pipelineConfig:
+  pipelines:
+    release:
+      pipeline:
+        agent:
+          image: gcr.io/jenkinsxio/builder-jx:0.1.714
+        stages:
+          - name: release
+            environment:
+            - name: GIT_COMMITTER_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_COMMITTER_NAME
+              value: jenkins-x-bot
+            - name: GIT_AUTHOR_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_AUTHOR_NAME
+              value: jenkins-x-bot
+            steps:
+              - name: changelog
+                command: jx
+                args: 
+                - step
+                - changelog
+                - --verbose
+                - --version
+                - ${VERSION}
+                - --rev
+                - ${PULL_BASE_SHA}
+              - name: downstream
+                command: ./updatebot.sh

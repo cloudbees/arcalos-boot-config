@@ -1,7 +1,6 @@
 dependencies:
 - name: jxboot-resources
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.14
 - alias: tekton
   name: tekton
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io

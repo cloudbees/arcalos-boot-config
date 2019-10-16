@@ -30,6 +30,10 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','override-requirements','-b', '--verbose']
+              - name: debug-requirements
+                dir: /workspace/source
+                command: cat
+                args: ['jx-requirements.yml']
               - name: verify-preinstall
                 dir: /workspace/source/env
                 command: jx
@@ -118,4 +122,8 @@ pipelineConfig:
               - name: replicate-secrets
                 dir: /workspace/source/env
                 command: jx
-                args: ['step','replicate', 'secret', 'tls-cb-aps-poc-consumer.*', '-r', 'jx-staging', '-r', 'jx-production', '--create-namespace']
+                args: ['step','replicate', 'secret', 'tls-aps-*', '-r', 'jx-staging', '-r', 'jx-production', '--create-namespace']
+              - name: verify-health
+                dir: /workspace/source/env
+                command: jx
+                args: ['diagnose', '--show', 'health']
