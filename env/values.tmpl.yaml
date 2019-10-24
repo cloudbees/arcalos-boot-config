@@ -175,3 +175,6 @@ autoUpdate:
   schedule: {{ .Requirements.autoUpdate.schedule | quote }}
   enabled: {{ .Requirements.autoUpdate.enabled }}
 {{- end }}
+
+versions:
+  builders: {{ versionStream "docker" "gcr.io/jenkinsxio/builder-go" }}
