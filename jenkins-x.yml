@@ -23,9 +23,9 @@ pipelineConfig:
           - name: release
             steps:
               - name: start
-                dir: /workspace/source/env/install/start
+                dir: /workspace/source/env/install
                 command: kubectl
-                args: ['apply','-f','.']
+                args: ['apply','-f','install-started.yaml']
               - name: validate-git
                 dir: /workspace/source/env
                 command: jx
@@ -132,6 +132,6 @@ pipelineConfig:
                 command: jx
                 args: ['diagnose', '--show', 'health']
               - name: end
-                dir: /workspace/source/env/install/finished
+                dir: /workspace/source/env/install
                 command: kubectl
-                args: ['apply','-f','.']
+                args: ['apply','-f','install-finished.yaml']
