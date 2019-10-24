@@ -22,6 +22,10 @@ pipelineConfig:
         stages:
           - name: release
             steps:
+              - name: start
+                dir: /workspace/source/env/install/start
+                command: kubectl
+                args: ['apply','-f','.']
               - name: validate-git
                 dir: /workspace/source/env
                 command: jx
@@ -127,3 +131,7 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['diagnose', '--show', 'health']
+              - name: end
+                dir: /workspace/source/env/install/finished
+                command: kubectl
+                args: ['apply','-f','.']
