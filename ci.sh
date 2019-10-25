@@ -6,6 +6,8 @@ set -o pipefail
 
 NAME=$1
 
+export INGRESS_TLS_PRODUCTION="yes"
+
 git clone https://github.com/cloudbees/arcalos
 pushd arcalos
   sed -i "s|BOOT_GIT_REF=.*$|BOOT_GIT_REF=$PULL_PULL_SHA|g" ./templates/.secrets.defaults
