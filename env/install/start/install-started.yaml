@@ -2,6 +2,5 @@ apiVersion: jenkins.io/v1alpha1
 kind: Install
 metadata:
   name: jx-boot-install
-  namespace: jx
 spec:
   phase: started
