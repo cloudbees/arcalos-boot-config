@@ -22,10 +22,14 @@ pipelineConfig:
         stages:
           - name: release
             steps:
+              - name: create-install-crd
+                dir: /workspace/source/env/install/start
+                command: kubectl
+                args: ['apply','-f','install-cdr.yaml']
               - name: start
                 dir: /workspace/source/env/install/start
                 command: kubectl
-                args: ['apply','-f','.']
+                args: ['apply','-f','install-started.yaml']
               - name: validate-git
                 dir: /workspace/source/env
                 command: jx
