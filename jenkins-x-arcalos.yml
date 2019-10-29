@@ -1,0 +1,84 @@
+buildPack: none
+pipelineConfig:
+  pipelines:
+    pullRequest:
+      pipeline:
+        agent:
+          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.129
+        options:
+          timeout:
+            time: 90
+            unit: minutes
+        environment:
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: admin_password
+            name: ADMIN_PASSWORD
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: dashboard_auth_id
+            name: DASHBOARD_AUTH_ID
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: dashboard_auth_secret
+            name: DASHBOARD_AUTH_SECRET
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: domain_issuer_password
+            name: DOMAIN_ISSUER_PASSWORD
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: domain_issuer_username
+            name: DOMAIN_ISSUER_USERNAME
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: pipeline_github_user
+            name: PIPELINE_GITHUB_USER
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: pipeline_github_token
+            name: PIPELINE_GITHUB_TOKEN
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: pipeline_github_email
+            name: PIPELINE_GITHUB_EMAIL
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: git_owner
+            name: GIT_OWNER
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: prow_hmac_token
+            name: PROW_HMAC_TOKEN
+          - value: jxaas
+            name: USER
+          - name: INGRESS_TLS_PRODUCTION
+            value: "no"  
+        stages:
+        - name: create
+          options:
+            volumes:
+              - name: sa
+                secret:
+                  secretName: arcalos-secret
+                  items:
+                    - key: ci_sa
+                      path: sa/ci_bot.json
+            containerOptions:
+              volumeMounts:
+                - mountPath: /secret
+                  name: sa
+          steps:
+          - name: ci
+            command: ./ci.sh
+            args: ['${BRANCH_NAME}-${BUILD_NUMBER}arc']
