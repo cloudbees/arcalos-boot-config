@@ -62,6 +62,8 @@ pipelineConfig:
             name: PROW_HMAC_TOKEN
           - value: jxaas
             name: USER
+          - name: INGRESS_TLS_PRODUCTION
+            value: "no"  
         stages:
         - name: create
           options:
