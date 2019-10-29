@@ -4,10 +4,10 @@ pipelineConfig:
     pullRequest:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/builder-jx:2.0.812-173
+          image: gcr.io/jenkinsxio/builder-jx
         options:
           timeout:
-            time: 60
+            time: 90
             unit: minutes
         environment:
           - valueFrom:
