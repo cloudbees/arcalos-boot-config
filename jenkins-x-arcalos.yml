@@ -81,4 +81,4 @@ pipelineConfig:
           steps:
           - name: ci
             command: ./ci.sh
-            args: ['${BRANCH_NAME}-${BUILD_NUMBER}arc']
+            args: ['${BRANCH_NAME}-${BUILD_NUMBER}abc']
