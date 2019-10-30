@@ -141,6 +141,13 @@ controllerbuild:
   - "--verbose"
 {{- end }}
 
+{{- if hasKey .Requirements.cluster "gke" }}
+controllerbuild:
+  serviceaccount:
+    annotations:
+      iam.gke.io/gcp-service-account: jenkins-x-controllerbuild@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
+{{- end }}
+
 gcactivities:
   args:
     - "gc"
