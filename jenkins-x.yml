@@ -103,6 +103,14 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
+              - name: add-user
+                dir: /workspace/source
+                command: jx
+                args: ['create', 'user', '--login=${USER_EMAIL}']
+              - name: add-user
+                dir: /workspace/source
+                command: jx
+                args: ['edit', 'userroles', '--login=${USER_EMAIL}', '--role=owner']
               - name: verify-env
                 dir: /workspace/source
                 command: jx
