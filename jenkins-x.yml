@@ -22,6 +22,10 @@ pipelineConfig:
         stages:
           - name: release
             steps:
+              - name: pre-debug-requirements
+                dir: /workspace/source
+                command: cat
+                args: ['jx-requirements.yml']
               - name: create-install-crd
                 dir: /workspace/source/env/install/start
                 command: kubectl
