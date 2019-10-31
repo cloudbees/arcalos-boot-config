@@ -29,3 +29,7 @@ dependencies:
   name: jxui
   repository: https://charts.cloudbees.com/cjxd/cloudbees
   version: 0.0.879
+- name: jx-tenant-service
+  alias: refresh
+  version: 0.0.155
+  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
