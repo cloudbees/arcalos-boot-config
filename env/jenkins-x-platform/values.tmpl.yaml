@@ -145,7 +145,7 @@ controllerbuild:
 controllerbuild:
   serviceaccount:
     annotations:
-      iam.gke.io/gcp-service-account: jenkins-x-controllerbuild@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
+      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.kanikoSAName }}@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
 {{- end }}
 
 gcactivities:
