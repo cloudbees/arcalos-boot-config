@@ -1,3 +1,5 @@
+command:
+- foo
 image:
   imagerepo: gcr.io/jenkinsxio/jx-tenant-service
   imagetag: 0.0.155
@@ -9,8 +11,7 @@ refreshRole:
   enabled: true
 refreshJob:
   enabled: true
-  command:
-    - jxt
+  command: ['jxt']
   args:
     - get
     - github
