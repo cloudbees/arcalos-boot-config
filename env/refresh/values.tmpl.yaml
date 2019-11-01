@@ -1,27 +1,16 @@
 image:
   imagerepo: gcr.io/jenkinsxio/jx-tenant-service
-<<<<<<< HEAD
   imagetag: 0.0.155
-=======
-  imagetag: 0.0.152
->>>>>>> feat: add refresh github app cron job
 refreshJobrb:
   enabled: true
 refreshJobsa:
   enabled: true
 refreshRole:
   enabled: true
-<<<<<<< HEAD
 refreshJob:
   enabled: true
   command:
     - jxt
-=======
-command:
-  - jxt
-refreshJob:
-  enabled: true
->>>>>>> feat: add refresh github app cron job
   args:
     - get
     - github

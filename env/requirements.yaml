@@ -14,9 +14,9 @@ dependencies:
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
 - name: jenkins-x-platform
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-- name: "sso-operator"
-  repository: "https://storage.googleapis.com/chartmuseum.jenkins-x.io"
-  version: "1.2.33"
+# - name: "sso-operator"
+#   repository: "https://storage.googleapis.com/chartmuseum.jenkins-x.io"
+#   version: "1.2.33"
 - name: jx-app-replicator
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   version: 1.0.14
@@ -29,3 +29,4 @@ dependencies:
   alias: refresh
   version: 0.0.155
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  alias: jx-app-kuberhealthy
