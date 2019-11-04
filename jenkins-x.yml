@@ -107,6 +107,14 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
+              - name: git-diff
+                dir: /workspace/source
+                command: git
+                args: ['diff']
+              - name: git-status
+                dir: /workspace/source
+                command: git
+                args: ['status']
               - name: verify-env
                 dir: /workspace/source
                 command: jx
