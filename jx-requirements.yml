@@ -8,6 +8,8 @@ cluster:
   provider: gke
   zone: ""
 gitops: true
+githubApp:
+  enabled: false
 environments:
 - key: dev
 - key: staging
