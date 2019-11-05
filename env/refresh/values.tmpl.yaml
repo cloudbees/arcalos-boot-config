@@ -1,0 +1,41 @@
+command:
+- foo
+image:
+  imagerepo: gcr.io/jenkinsxio/jx-tenant-service
+  imagetag: 0.0.155
+refreshJobrb:
+  enabled: true
+refreshJobsa:
+  enabled: true
+refreshRole:
+  enabled: true
+refreshJob:
+  enabled: true
+  command: ['jxt']
+  args:
+    - get
+    - github
+    - token
+  env:
+    JX_REQUIREMENT_DOMAIN_ISSUER_URL: "{{ .Requirements.ingress.domainIssuerURL }}"
+  schedule: 30 * * * *
+service:
+  enabled: false
+updatejob:
+  enabled: false
+basicAuthSecret:
+  enabled: false
+cloudsqlsa:
+  enabled: false
+deployment:
+  enabled: false
+rolebinding:
+  enabled: false
+saasSecret:
+  enabled: false
+secret:
+  enabled: false
+serviceAccount:
+  enabled: false
+wildcardSecret:
+  enabled: false

@@ -56,7 +56,7 @@ pipelineConfig:
                 args: ['step','get','subdomain', '-b', '--verbose']
               - name: get-tenant-token
                 dir: /workspace/source/env
-                image: gcr.io/jenkinsxio/jx-tenant-service:0.0.129
+                image: gcr.io/jenkinsxio/jx-tenant-service:0.0.163
                 command: jxt
                 args: ['get','token']
               - name: install-jx-crds
@@ -107,6 +107,9 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
+              - name: add-user
+                dir: /workspace/source
+                command: './adduser.sh'
               - name: verify-env
                 dir: /workspace/source
                 command: jx
@@ -130,12 +133,12 @@ pipelineConfig:
                 args: ['step','scheduler','config', 'apply', '--direct=true']
               - name: register-repositories
                 dir: /workspace/source/env
-                image: gcr.io/jenkinsxio/jx-tenant-service:0.0.129
+                image: gcr.io/jenkinsxio/jx-tenant-service:0.0.163
                 command: jxt
                 args: ['register','repositories']
               - name: refresh-git-tokens
                 dir: /workspace/source/env
-                image: gcr.io/jenkinsxio/jx-tenant-service:0.0.129
+                image: gcr.io/jenkinsxio/jx-tenant-service:0.0.163
                 command: jxt
                 args: ['get','github', 'token']
               - name: update-webhooks
