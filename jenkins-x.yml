@@ -100,7 +100,7 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/systems/jxing
             env:
-              name: DEPLOY_NAMESPACE
+            - name: DEPLOY_NAMESPACE
               value: kube-system
             name: install-nginx
           - args:
@@ -135,7 +135,7 @@ pipelineConfig:
             command: kubectl
             dir: /workspace/source
             env:
-              name: DEPLOY_NAMESPACE
+            - name: DEPLOY_NAMESPACE
               value: cert-manager
             name: install-cert-manager-crds
           - args:
@@ -150,7 +150,7 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/systems/cm
             env:
-              name: DEPLOY_NAMESPACE
+            - name: DEPLOY_NAMESPACE
               value: cert-manager
             name: install-cert-manager
           - args:
