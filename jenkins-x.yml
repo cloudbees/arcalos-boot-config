@@ -199,6 +199,10 @@ pipelineConfig:
             dir: /workspace/source
             name: add-user
           - args:
+            - diff
+            command: git
+            name: git-diff
+          - args:
             - step
             - verify
             - env
