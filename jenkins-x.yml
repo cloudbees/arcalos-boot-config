@@ -103,10 +103,26 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step', 'create', 'values', '--name', 'parameters']
+              - name: git-diff0
+                dir: /workspace/source
+                command: git
+                args: ['diff']
+              - name: git-status0
+                dir: /workspace/source
+                command: git
+                args: ['status']
               - name: install-env
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
+              - name: git-diff1
+                dir: /workspace/source
+                command: git
+                args: ['diff']
+              - name: git-status1
+                dir: /workspace/source
+                command: git
+                args: ['status']
               - name: add-user
                 dir: /workspace/source
                 command: './adduser.sh'
