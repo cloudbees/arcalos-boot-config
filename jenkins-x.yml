@@ -195,7 +195,7 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/env
             name: install-env
-          - command: './adduser.sh'
+          - command: ./adduser.sh
             dir: /workspace/source
             name: add-user
           - args:
