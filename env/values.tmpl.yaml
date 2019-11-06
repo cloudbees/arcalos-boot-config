@@ -178,3 +178,5 @@ autoUpdate:
 
 refresh:
   enabled: {{ .Requirements.githubApp.enabled }}
+jx-repository-controller:
+  enabled: {{ .Requirements.githubApp.enabled }}
