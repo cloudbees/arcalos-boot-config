@@ -5,7 +5,7 @@ set -u
 set -o pipefail
 
 NAME=$1
-ARCALOS_SHA="e52e8e4c04bf066275aa2a7c31377ad969fdcc97"
+ARCALOS_SHA=""
 
 git clone https://github.com/cloudbees/arcalos
 
