@@ -142,10 +142,12 @@ controllerbuild:
 {{- end }}
 
 {{- if hasKey .Requirements.cluster "gke" }}
+{{- if hasKey .Requirements.cluster.gke "projectNumber" }}
 controllerbuild:
   serviceaccount:
     annotations:
-      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.kanikoSAName }}@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
+      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-st@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
+{{- end }}
 {{- end }}
 
 gcactivities:
