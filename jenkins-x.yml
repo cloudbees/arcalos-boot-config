@@ -22,10 +22,6 @@ pipelineConfig:
         stages:
           - name: release
             steps:
-              - name: debug-jx-version
-                dir: /workspace/source
-                command: jx
-                args: ['--version']
               - name: create-install-crd
                 dir: /workspace/source/env/install/start
                 command: kubectl
