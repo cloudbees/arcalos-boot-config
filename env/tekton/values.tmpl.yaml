@@ -9,11 +9,32 @@ enabled: false
 webhook:
   enabled: false
 
+{{- if .Requirements.githubApp.enabled }}
+image:
+  upstreamtag: v20191107-d77506e
+  kubeconfigwriter: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/kubeconfigwriter
+  credsinit: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/creds-init
+  gitinit: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/git-init
+  nop: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/nop
+  bash: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/bash
+  gsutil: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/gsutil
+  controller: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/controller
+  webhook: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/webhook
+  entrypoint: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/entrypoint
+  pullrequest: gcr.io/jenkinsxio/tektoncd/pipeline/cmd/pullrequest-init
+{{- end }}
+
 auth:
   git:
     username: "{{ .Parameters.pipelineUser.username }}"
     password: "{{ .Parameters.pipelineUser.token }}"
+{{- if .Requirements.githubApp.enabled }}
+    # lets disable using a github.com secret in knative-
+    url: "https://disabled.github.com"
+{{- else }}
     url: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
+{{- end }}
+
 
 {{- if hasKey .Parameters "docker" }}
 docker:
