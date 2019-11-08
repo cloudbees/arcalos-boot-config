@@ -131,10 +131,12 @@ tekton:
     enabled: false
 
 {{- if hasKey .Requirements.cluster "gke" }}
+{{- if hasKey .Requirements.cluster.gke "projectNumber" }}
 tekton:
   serviceaccount:
     annotations:
       iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-tk@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
+{{- end }}
 {{- end }}
 
 JenkinsXGitHub:
