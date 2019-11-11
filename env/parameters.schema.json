@@ -67,25 +67,6 @@
         }
       }
     },
-    "dashboardAuthID": {
-      "type": "string",
-      "title": "Dashboard auth id",
-      "format": "token"
-    },
-    "dashboardAuthSecret": {	
-      "type": "string",	
-      "title": "Dashboard auth secret",
-      "format": "token"
-    },	
-    "dashboardAuthOrg": {	
-      "type": "string",	
-      "title": "Dashboard auth org"	
-    },	
-    "dashboardGrpchost": {	
-      "type": "string",	
-      "title": "Dex GRPC Host",	
-      "description": "TODO OK LETS DO THIS A BETTER WAY"	
-    },
     "enableDocker": {
       "type": "boolean",
       "title": "Do you want to configure an external Docker Registry?",

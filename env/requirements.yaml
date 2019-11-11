@@ -25,6 +25,11 @@ dependencies:
   version: 0.0.2
   condition: jx-app-kuberhealthy.enabled
   alias: jx-app-kuberhealthy
+- name: jx-segment-controller
+  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  version: 0.0.3
+  condition: jx-segment-controller.enabled
+  alias: jx-segment-controller
 - name: jx-tenant-service
   alias: refresh
   version: 0.0.155
