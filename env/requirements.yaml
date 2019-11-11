@@ -38,3 +38,9 @@ dependencies:
   alias: refresh
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   condition: refresh.enabled
+- name: jx-arcalos-role-controller
+  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  version: 0.0.6
+  condition: jx-arcalos-role-controller.enabled
+  alias: arcalosrole
+
