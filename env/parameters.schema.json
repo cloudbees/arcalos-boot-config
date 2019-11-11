@@ -84,7 +84,13 @@
     "dashboardGrpchost": {	
       "type": "string",	
       "title": "Dex GRPC Host",	
-      "description": "TODO OK LETS DO THIS A BETTER WAY"	
+      "description": "TODO OK LETS DO THIS A BETTER WAY"
+    },
+    "segmentWriteKey": {
+      "title": "Segment Write Key",
+      "type": "string",
+      "description": "Segment Write Key",
+      "format": "token"
     },
     "enableDocker": {
       "type": "boolean",

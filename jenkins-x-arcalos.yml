@@ -28,6 +28,11 @@ pipelineConfig:
           - valueFrom:
               secretKeyRef:
                 name: arcalos-secret
+                key: segment_write_key
+            name: SEGMENT_WRITE_KEY
+          - valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
                 key: domain_issuer_password
             name: DOMAIN_ISSUER_PASSWORD
           - valueFrom:
