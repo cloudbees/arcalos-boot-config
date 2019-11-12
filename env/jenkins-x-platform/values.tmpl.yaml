@@ -129,8 +129,8 @@ PipelineSecrets:
             IdentityFile /root/.ssh-git/ssh-key
             StrictHostKeyChecking no
 
-{{- if eq .Requirements.webhook "lighthouse" }}
 controllerbuild:
+{{- if eq .Requirements.webhook "lighthouse" }}
   enabled: true
   args:
   - "controller"
@@ -139,6 +139,16 @@ controllerbuild:
   - "--batch-mode"
   - "--git-credentials"
   - "--verbose"
+{{- else }}
+  enabled: false
+{{- end }}
+
+{{- if hasKey .Requirements.cluster "gke" }}
+{{- if hasKey .Requirements.cluster.gke "projectNumber" }}
+  serviceaccount:
+    annotations:
+      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-st@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
+{{- end }}
 {{- end }}
 
 gcactivities:

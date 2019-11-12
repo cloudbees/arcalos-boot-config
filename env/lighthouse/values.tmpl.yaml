@@ -14,7 +14,15 @@ git:
 service:
   name: hook
   
+{{- if .Requirements.githubApp.enabled }}
+tide:
+  githubApp:
+    enabled: true
+
+replicaCount: 0
+{{- else }}
 replicaCount: 1
+{{- end }}
 
 image:
   repository: gcr.io/jenkinsxio/lighthouse

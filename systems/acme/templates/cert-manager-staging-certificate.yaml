@@ -4,6 +4,8 @@ apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
   name: "tls-{{ .Values.cluster.domain | replace "." "-" }}-s"
+  labels:
+    jenkins.io/letsencrypt-service: staging
 spec:
   secretName: "tls-{{ .Values.cluster.domain | replace "." "-" }}-s"
   issuerRef:

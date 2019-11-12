@@ -8,6 +8,10 @@ cluster:
   provider: gke
   zone: ""
 gitops: true
+githubApp:
+  enabled: false
+  url: ""
+  schedule: '0 0 * * *'
 environments:
 - key: dev
 - key: staging
