@@ -2,7 +2,7 @@ command:
 - foo
 image:
   imagerepo: gcr.io/jenkinsxio/jx-tenant-service
-  imagetag: 0.0.155
+  imagetag: {{ versionStream "docker" "gcr.io/jenkinsxio/jx-tenant-service" }}
 refreshJobrb:
   enabled: true
 refreshJobsa:
