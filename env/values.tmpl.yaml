@@ -187,3 +187,6 @@ autoUpdate:
 
 versions:
   builders: {{ versionStream "docker" "gcr.io/jenkinsxio/builder-go" }}
+
+refresh:
+  enabled: {{ .Requirements.githubApp.enabled }}
