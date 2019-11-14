@@ -1,0 +1,5 @@
+{{- if .Requirements.githubApp.enabled }}
+enabled: true
+{{- else }}
+enabled: false
+{{- end }}

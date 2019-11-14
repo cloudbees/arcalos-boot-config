@@ -203,14 +203,6 @@ pipelineConfig:
             command: git
             name: git-diff
           - args:
-            - step
-            - verify
-            - env
-            - --verbose
-            command: jx
-            dir: /workspace/source
-            name: verify-env
-          - args:
             - ""
             - ""
             - "now populating projects...."
@@ -253,6 +245,14 @@ pipelineConfig:
             dir: /workspace/source/env
             image: gcr.io/jenkinsxio/jx-tenant-service:0.0.222
             name: refresh-git-tokens
+          - args:
+            - step
+            - verify
+            - env
+            - --verbose
+            command: jx
+            dir: /workspace/source
+            name: verify-env
           - args:
             - update
             - webhooks
