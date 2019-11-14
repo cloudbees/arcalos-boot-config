@@ -68,12 +68,16 @@ pipelineConfig:
             dir: /workspace/source/env
             name: verify-preinstall
           - args:
-            - step
+            - get
+            - token
+            command: jxt
+            dir: /workspace/source/env
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.222
+            name: get-tenant-token
+          - args:
             - get
             - subdomain
-            - -b
-            - --verbose
-            command: jx
+            command: jxt
             dir: /workspace/source/env
             name: get-subdomain
           - args:
