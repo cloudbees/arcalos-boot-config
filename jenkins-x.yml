@@ -68,19 +68,6 @@ pipelineConfig:
             dir: /workspace/source/env
             name: verify-preinstall
           - args:
-            - get
-            - token
-            command: jxt
-            dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.222
-            name: get-tenant-token
-          - args:
-            - get
-            - subdomain
-            command: jxt
-            dir: /workspace/source/env
-            name: get-subdomain
-          - args:
             - upgrade
             - crd
             command: jx
@@ -234,6 +221,12 @@ pipelineConfig:
             dir: /workspace/source/env
             image: gcr.io/jenkinsxio/jx-tenant-service:0.0.233
             name: get-tenant-token
+          - args:
+            - get
+            - subdomain
+            command: jxt
+            dir: /workspace/source/env
+            name: get-subdomain
           - args:
             - register
             - repositories
