@@ -77,13 +77,6 @@ pipelineConfig:
             dir: /workspace/source/env
             name: get-subdomain
           - args:
-            - get
-            - token
-            command: jxt
-            dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.233
-            name: get-tenant-token
-          - args:
             - upgrade
             - crd
             command: jx
@@ -230,6 +223,13 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/prowConfig
             name: apply-pipeline-schedulers
+          - args:
+            - get
+            - token
+            command: jxt
+            dir: /workspace/source/env
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.233
+            name: get-tenant-token
           - args:
             - register
             - repositories
