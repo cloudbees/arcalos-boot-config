@@ -5,7 +5,7 @@ set -u
 set -o pipefail
 
 NAME=$1
-ARCALOS_SHA="" #pragma: allowlist secret
+ARCALOS_SHA="29fa8f4d163ceb28f61843e735d2608184217d1a" #pragma: allowlist secret
 
 git clone https://github.com/cloudbees/arcalos
 
