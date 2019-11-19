@@ -81,6 +81,15 @@ pipelineConfig:
             dir: /workspace/source/systems/vault
             name: install-vault
           - args:
+            - step
+            - get
+            - subdomain
+            - -b
+            - --verbose
+            command: jx
+            dir: /workspace/source/systems/vault
+            name: install-vault
+          - args:
             - get
             - token
             command: jxt
