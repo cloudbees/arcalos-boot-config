@@ -97,13 +97,6 @@ pipelineConfig:
             image: gcr.io/jenkinsxio/jx-tenant-service:0.0.242
             name: get-tenant-token
           - args:
-            - get
-            - subdomain
-            command: jxt
-            dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.242
-            name: get-subdomain
-          - args:
             - step
             - helm
             - apply
