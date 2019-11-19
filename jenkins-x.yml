@@ -68,19 +68,32 @@ pipelineConfig:
             dir: /workspace/source/env
             name: verify-preinstall
           - args:
-            - step
-            - get
-            - subdomain
-            - -b
-            - --verbose
-            command: jx
-            dir: /workspace/source/env
-            name: get-subdomain
-          - args:
             - upgrade
             - crd
             command: jx
             name: install-jx-crds
+          - args:
+            - step
+            - boot
+            - vault
+            - --verbose
+            command: jx
+            dir: /workspace/source/systems/vault
+            name: install-vault
+          - args:
+            - get
+            - token
+            command: jxt
+            dir: /workspace/source/env
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.239
+            name: get-tenant-token
+          - args:
+            - get
+            - subdomain
+            command: jxt
+            dir: /workspace/source/env
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.239
+            name: get-subdomain
           - args:
             - step
             - helm
@@ -158,14 +171,6 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/systems/acme
             name: install-acme-issuer-and-certificate
-          - args:
-            - step
-            - boot
-            - vault
-            - --verbose
-            command: jx
-            dir: /workspace/source/systems/vault
-            name: install-vault
           - args:
             - step
             - create
@@ -253,13 +258,6 @@ pipelineConfig:
             - name: DEPLOY_NAMESPACE
               value: velero
             name: install-velero-backups
-          - args:
-            - get
-            - token
-            command: jxt
-            dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.239
-            name: get-tenant-token
           - args:
             - register
             - repositories
