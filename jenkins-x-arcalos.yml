@@ -4,7 +4,7 @@ pipelineConfig:
     pullRequest:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.239
+          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.241
         options:
           timeout:
             time: 90
