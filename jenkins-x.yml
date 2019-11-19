@@ -68,6 +68,11 @@ pipelineConfig:
             dir: /workspace/source/env
             name: verify-preinstall
           - args:
+            - upgrade
+            - crd
+            command: jx
+            name: install-jx-crds
+          - args:
             - step
             - boot
             - vault
@@ -84,11 +89,6 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/env
             name: get-subdomain
-          - args:
-            - upgrade
-            - crd
-            command: jx
-            name: install-jx-crds
           - args:
             - step
             - helm
