@@ -19,6 +19,8 @@ velero:
     backupStorageLocation:
       name: gcp
       bucket: {{ .Requirements.storage.backup.url | removeScheme | quote }}
+    volumeSnapshotLocation:
+      name: gcp
 {{- else if or (eq .Requirements.cluster.provider "aws") (eq .Requirements.cluster.provider "eks") }}
   configuration:
     provider: aws
@@ -27,6 +29,8 @@ velero:
       bucket: {{ .Requirements.storage.backup.url | removeScheme | quote }}
       config:
         region: {{ .Requirements.cluster.region | quote }}
+    volumeSnapshotLocation:
+      name: aws
 {{- else if eq .Requirements.cluster.provider "azure" }}
   configuration:
     provider: azure
@@ -35,6 +39,8 @@ velero:
       bucket: {{ .Requirements.storage.backup.url | removeScheme | quote }}
       config:
         storageAccount: {{ .Requirements.velero.serviceAccount | quote }}
+    volumeSnapshotLocation:
+      name: azure
 {{- else if eq .Requirements.cluster.provider "iks" }}
   snapshotsEnabled: false
   configuration:
@@ -46,5 +52,7 @@ velero:
         region: {{ .Requirements.cluster.region | quote }}
         s3ForcePathStyle: "true"
         s3Url: {{ .Requirements.storage.backup.url | quote }}
+    volumeSnapshotLocation:
+      name: aws
 {{- end }}
 
