@@ -259,6 +259,13 @@ pipelineConfig:
               value: velero
             name: install-velero-backups
           - args:
+            - delete
+            - volumesnapshotlocations.velero.io
+            - default
+            - --ignore-not-found
+            command: kubectl
+            name: remove-velero-volume-snapshot-location
+          - args:
             - register
             - repositories
             command: jxt
