@@ -96,6 +96,8 @@ jenkins-x-platform:
     enabled: true
   jenkins:
     Agent:
+      DockerHostPath: ""
+      DockerMountPath: ""
       PodTemplates:
         Go:
           Containers:
