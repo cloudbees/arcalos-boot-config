@@ -28,6 +28,8 @@ nexus:
   defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
 
 jenkins:
+  Agent:
+    DockerMountHost: ""
   Master:
     AdminPassword: "{{ .Parameters.adminUser.password }}"
 
