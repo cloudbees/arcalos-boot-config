@@ -29,7 +29,8 @@ nexus:
 
 jenkins:
   Agent:
-    DockerMountHost: ""
+    DockerMountPath: ""
+    DockerHostPath: ""
   Master:
     AdminPassword: "{{ .Parameters.adminUser.password }}"
 
