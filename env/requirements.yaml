@@ -27,7 +27,6 @@ dependencies:
   alias: jx-app-kuberhealthy
 - name: jx-repository-controller
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.69
   condition: repositorycontroller.enabled
   alias: repositorycontroller
 - name: jx-segment-controller
