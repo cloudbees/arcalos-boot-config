@@ -18,7 +18,7 @@ refreshJob:
     - token
   env:
     JX_REQUIREMENT_DOMAIN_ISSUER_URL: "{{ .Requirements.ingress.domainIssuerURL }}"
-  schedule: 30 * * * *
+  schedule: "*/15 * * * *"
 service:
   enabled: false
 updatejob:
