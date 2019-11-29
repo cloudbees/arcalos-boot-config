@@ -21,6 +21,7 @@ spec:
           - args:
             - upgrade
             - boot
+            - --latest-release=true
             command:
             - jx
             image: gcr.io/jenkinsxio/builder-go:{{ .Values.versions.builders }}
