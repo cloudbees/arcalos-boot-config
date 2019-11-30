@@ -36,6 +36,5 @@ dependencies:
   alias: jx-segment-controller
 - name: jx-tenant-service
   alias: refresh
-  version: 0.0.155
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   condition: refresh.enabled
