@@ -18,7 +18,7 @@ environments:
 - key: production
 ingress:
   domain: ""
-  externalDNS: false
+  externalDNS: true
   tls:
     email: jenkins-x@cloudbees.com
     enabled: true
