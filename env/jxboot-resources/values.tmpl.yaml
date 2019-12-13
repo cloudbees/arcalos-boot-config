@@ -18,6 +18,9 @@ cluster:
   tls: true
 {{- end }}
 
+namespace:
+  enabled: true
+
 gitops:
   versionStreamUrl: {{ .Requirements.versionStream.url }}
   versionStreamRef: {{ .Requirements.versionStream.ref }}
