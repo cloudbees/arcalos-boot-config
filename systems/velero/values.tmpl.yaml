@@ -65,6 +65,7 @@ velero:
     volumeMounts:
     - mountPath: /target
       name: plugins
+  snapshotsEnabled: false
   configuration:
     provider: aws
     backupStorageLocation:
