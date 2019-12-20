@@ -2,4 +2,4 @@
 
 Dependency | Sources | Version | Mismatched versions
 ---------- | ------- | ------- | -------------------
-[cloudbees/jx-tenant-service](https://github.com/cloudbees/jx-tenant-service) |  | [0.0.339](https://github.com/cloudbees/jx-tenant-service/releases/tag/v0.0.339) | 
+[cloudbees/jx-tenant-service](https://github.com/cloudbees/jx-tenant-service) |  | [0.0.340](https://github.com/cloudbees/jx-tenant-service/releases/tag/v0.0.340) | 
