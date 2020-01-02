@@ -2,8 +2,8 @@ velero:
 {{- if and (hasKey .Requirements "velero") (hasKey .Requirements.velero "namespace") }}
   {{- if .Requirements.velero.namespace }}
   enabled: true
-  schedule: {{ .Requirements.velero.schedule }}	
-  ttl: {{ .Requirements.velero.ttl }}
+  schedule: {{ .Requirements.velero.schedule | default "*/10 * * * *" }}	
+  ttl: {{ .Requirements.velero.ttl | default "720h0m0s" }}
   {{- else }}
   enabled: false
   {{- end }}
