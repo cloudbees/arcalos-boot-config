@@ -10,13 +10,15 @@ cluster:
 gitops: true
 githubApp:
   enabled: false
+  url: ""
+  schedule: '0 0 * * *'
 environments:
 - key: dev
 - key: staging
 - key: production
 ingress:
   domain: ""
-  externalDNS: false
+  externalDNS: true
   tls:
     email: jenkins-x@cloudbees.com
     enabled: true
@@ -33,4 +35,6 @@ storage:
   repository:
     enabled: false
     url: ""
+velero:
+  namespace: velero
 webhook: prow

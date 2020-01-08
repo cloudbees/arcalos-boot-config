@@ -25,13 +25,22 @@ dependencies:
   version: 0.0.2
   condition: jx-app-kuberhealthy.enabled
   alias: jx-app-kuberhealthy
+- name: jx-repository-controller
+  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  condition: repositorycontroller.enabled
+  alias: repositorycontroller
 - name: jx-segment-controller
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 0.0.3
+  version: 0.0.13
   condition: jx-segment-controller.enabled
   alias: jx-segment-controller
 - name: jx-tenant-service
   alias: refresh
-  version: 0.0.155
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   condition: refresh.enabled
+- name: jx-arcalos-role-controller
+  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  version: 0.0.6
+  condition: jx-arcalos-role-controller.enabled
+  alias: arcalosrole
+

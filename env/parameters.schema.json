@@ -67,6 +67,12 @@
         }
       }
     },
+    "segmentWriteKey": {
+      "title": "Segment Write Key",
+      "type": "string",
+      "description": "Segment Write Key",
+      "format": "token"
+    },
     "enableDocker": {
       "type": "boolean",
       "title": "Do you want to configure an external Docker Registry?",

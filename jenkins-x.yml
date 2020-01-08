@@ -68,26 +68,32 @@ pipelineConfig:
             dir: /workspace/source/env
             name: verify-preinstall
           - args:
+            - upgrade
+            - crd
+            command: jx
+            name: install-jx-crds
+          - args:
             - step
-            - get
-            - subdomain
-            - -b
+            - boot
+            - vault
             - --verbose
             command: jx
-            dir: /workspace/source/env
-            name: get-subdomain
+            dir: /workspace/source/systems/vault
+            name: install-vault
           - args:
             - get
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.207
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.365
             name: get-tenant-token
           - args:
-            - upgrade
-            - crd
-            command: jx
-            name: install-jx-crds
+            - get
+            - subdomain
+            command: jxt
+            dir: /workspace/source/env
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.365
+            name: get-subdomain
           - args:
             - step
             - helm
@@ -167,14 +173,6 @@ pipelineConfig:
             name: install-acme-issuer-and-certificate
           - args:
             - step
-            - boot
-            - vault
-            - --verbose
-            command: jx
-            dir: /workspace/source/systems/vault
-            name: install-vault
-          - args:
-            - step
             - create
             - values
             - --name
@@ -202,14 +200,6 @@ pipelineConfig:
             - diff
             command: git
             name: git-diff
-          - args:
-            - step
-            - verify
-            - env
-            - --verbose
-            command: jx
-            dir: /workspace/source
-            name: verify-env
           - args:
             - ""
             - ""
@@ -239,11 +229,41 @@ pipelineConfig:
             dir: /workspace/source/prowConfig
             name: apply-pipeline-schedulers
           - args:
+            - step
+            - helm
+            - apply
+            - --boot
+            - --remote
+            - --no-vault
+            - --name
+            - velero
+            command: jx
+            dir: /workspace/source/systems/velero
+            env:
+            - name: DEPLOY_NAMESPACE
+              value: velero
+            name: install-velero
+          - args:
+            - step
+            - helm
+            - apply
+            - --boot
+            - --remote
+            - --no-vault
+            - --name
+            - velero-backups
+            command: jx
+            dir: /workspace/source/systems/velero-backups
+            env:
+            - name: DEPLOY_NAMESPACE
+              value: velero
+            name: install-velero-backups
+          - args:
             - register
             - repositories
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.207
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.365
             name: register-repositories
           - args:
             - get
@@ -251,8 +271,16 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.207
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.365
             name: refresh-git-tokens
+          - args:
+            - step
+            - verify
+            - env
+            - --verbose
+            command: jx
+            dir: /workspace/source
+            name: verify-env
           - args:
             - update
             - webhooks
@@ -274,7 +302,7 @@ pipelineConfig:
             - step
             - replicate
             - secret
-            - tls-aps-*
+            - tls-cbjx-*
             - -r
             - jx-staging
             - -r

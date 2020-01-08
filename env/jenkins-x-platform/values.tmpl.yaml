@@ -28,6 +28,9 @@ nexus:
   defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
 
 jenkins:
+  Agent:
+    DockerMountPath: ""
+    DockerHostPath: ""
   Master:
     AdminPassword: "{{ .Parameters.adminUser.password }}"
 
@@ -143,12 +146,10 @@ controllerbuild:
   enabled: false
 {{- end }}
 
-{{- if hasKey .Requirements.cluster "gke" }}
-{{- if hasKey .Requirements.cluster.gke "projectNumber" }}
+{{- if hasKey .Requirements.cluster "project" }}
   serviceaccount:
     annotations:
-      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-st@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
-{{- end }}
+      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-st@{{ .Requirements.cluster.project }}.iam.gserviceaccount.com
 {{- end }}
 
 gcactivities:

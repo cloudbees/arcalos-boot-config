@@ -96,6 +96,8 @@ jenkins-x-platform:
     enabled: true
   jenkins:
     Agent:
+      DockerHostPath: ""
+      DockerMountPath: ""
       PodTemplates:
         Go:
           Containers:
@@ -130,13 +132,10 @@ tekton:
   webhook:
     enabled: false
 
-{{- if hasKey .Requirements.cluster "gke" }}
-{{- if hasKey .Requirements.cluster.gke "projectNumber" }}
-tekton:
+{{- if hasKey .Requirements.cluster "project" }}
   serviceaccount:
     annotations:
-      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-tk@{{ .Requirements.cluster.gke.projectNumber }}.iam.gserviceaccount.com
-{{- end }}
+      iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-tk@{{ .Requirements.cluster.project }}.iam.gserviceaccount.com
 {{- end }}
 
 JenkinsXGitHub:
@@ -184,6 +183,9 @@ autoUpdate:
   schedule: {{ .Requirements.autoUpdate.schedule | quote }}
   enabled: {{ .Requirements.autoUpdate.enabled }}
 {{- end }}
+
+versions:
+  builders: {{ versionStream "docker" "gcr.io/jenkinsxio/builder-go" }}
 
 refresh:
   enabled: {{ .Requirements.githubApp.enabled }}
