@@ -48,7 +48,6 @@ pipelineConfig:
             - step
             - override-requirements
             - -b
-            - --verbose
             command: jx
             dir: /workspace/source/env
             name: override-requirements
@@ -61,7 +60,6 @@ pipelineConfig:
             - step
             - verify
             - preinstall
-            - --verbose
             - --lazy-create=true
             - --workload-identity=true
             command: jx
@@ -76,7 +74,6 @@ pipelineConfig:
             - step
             - boot
             - vault
-            - --verbose
             command: jx
             dir: /workspace/source/systems/vault
             name: install-vault
@@ -116,7 +113,6 @@ pipelineConfig:
             - values
             - -b
             - --lazy-create=true
-            - --verbose
             command: jx
             dir: /workspace/source/env
             name: create-install-values
@@ -277,14 +273,12 @@ pipelineConfig:
             - step
             - verify
             - env
-            - --verbose
             command: jx
             dir: /workspace/source
             name: verify-env
           - args:
             - update
             - webhooks
-            - --verbose
             - --warn-on-fail
             command: jx
             dir: /workspace/source/repositories
