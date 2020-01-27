@@ -52,11 +52,6 @@ pipelineConfig:
             dir: /workspace/source/env
             name: override-requirements
           - args:
-            - jx-requirements.yml
-            command: cat
-            dir: /workspace/source
-            name: debug-requirements
-          - args:
             - step
             - verify
             - preinstall
@@ -192,10 +187,6 @@ pipelineConfig:
           - command: ./adduser.sh
             dir: /workspace/source
             name: add-user
-          - args:
-            - diff
-            command: git
-            name: git-diff
           - args:
             - ""
             - ""
