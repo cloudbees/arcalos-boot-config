@@ -73,29 +73,6 @@ pipelineConfig:
             dir: /workspace/source/systems/vault
             name: install-vault
           - args:
-            - step
-            - create
-            - templated
-            - --parameters-file=../../env/parameters.yaml
-            - --requirements-dir=../../
-            - --template-file=jx-auth-configmap.tmpl.yaml
-            - --config-file=templates/jx-auth-configmap.yaml
-            command: jx
-            dir: /workspace/source/systems/jx-auth
-            name: create-jx-auth-config
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --no-vault
-            - --name
-            - jx-auth
-            command: jx
-            dir: /workspace/source/systems/jx-auth
-            name: install-jx-auth-config
-          - args:
             - get
             - token
             command: jxt
@@ -194,6 +171,29 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/env
             name: helm-populate-params
+          - args:
+            - step
+            - create
+            - templated
+            - --parameters-file=../../env/parameters.yaml
+            - --requirements-dir=../../
+            - --template-file=jx-auth-configmap.tmpl.yaml
+            - --config-file=templates/jx-auth-configmap.yaml
+            command: jx
+            dir: /workspace/source/systems/jx-auth
+            name: create-jx-auth-config
+          - args:
+            - step
+            - helm
+            - apply
+            - --boot
+            - --remote
+            - --no-vault
+            - --name
+            - jx-auth
+            command: jx
+            dir: /workspace/source/systems/jx-auth
+            name: install-jx-auth-config
           - args:
             - step
             - helm
