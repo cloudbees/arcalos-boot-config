@@ -1,3 +1,4 @@
+apiVersion: v1
 description: Cert Manager Chart
 maintainers:
 - name: Team

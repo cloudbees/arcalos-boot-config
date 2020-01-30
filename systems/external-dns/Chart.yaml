@@ -1,3 +1,4 @@
+apiVersion: v1
 description: External-DNS Chart
 maintainers:
 - name: Team
