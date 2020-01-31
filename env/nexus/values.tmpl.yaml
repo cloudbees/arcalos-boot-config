@@ -1,0 +1,5 @@
+{{- if  or (eq .Requirements.repository "nexus") (eq .Requirements.repository "") }}
+enabled: true
+{{- else }}
+enabled: false
+{{- end }}

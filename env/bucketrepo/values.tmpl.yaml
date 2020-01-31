@@ -1,0 +1,15 @@
+{{- if and (hasKey .Requirements "repository") (eq .Requirements.repository "bucketrepo") }}
+enabled: true
+{{- else }}
+enabled: false
+{{- end }}
+
+config:
+  storage:
+{{- if .Requirements.storage.repository.url }}
+    enabled: true
+{{- end }}
+    bucketUrl: "{{ .Requirements.storage.repository.url }}"
+  auth:
+    username: "{{ .Parameters.adminUser.username }}"
+    password: "{{ .Parameters.adminUser.password }}"
