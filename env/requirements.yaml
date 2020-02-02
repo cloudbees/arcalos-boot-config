@@ -16,6 +16,7 @@ dependencies:
   condition: bucketrepo.enabled
   name: bucketrepo
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  version: 0.1.27
 - name: jenkins-x-platform
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
 - name: jx-app-replicator
