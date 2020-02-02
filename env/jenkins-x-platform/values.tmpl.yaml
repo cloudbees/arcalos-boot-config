@@ -7,13 +7,17 @@ cleanup:
   enabled: false
 
 chartmuseum:
+{{- if and (hasKey .Requirements "repository") (eq .Requirements.repository "bucketrepo") }}
+  enabled: false
+{{- else }}
   env:
-    open:
-      AUTH_ANONYMOUS_GET: true
-      DISABLE_API: false
     secret:
       BASIC_AUTH_USER: "{{ .Parameters.adminUser.username }}"
       BASIC_AUTH_PASS: "{{ .Parameters.adminUser.password }}"
+{{- end }}
+    open:
+      AUTH_ANONYMOUS_GET: true
+      DISABLE_API: false
   image:
     tag: v0.7.1
   resources:
@@ -23,9 +27,17 @@ chartmuseum:
     requests:
       cpu: 320m
       memory: 256Mi
-
 nexus:
   defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
+{{- if hasKey .Requirements "repository"}}
+{{- if or (eq .Requirements.repository "nexus") (eq .Requirements.repository "") }}
+  enabled: true
+{{- else }}
+  enabled: false
+{{- end }}
+{{- else }}
+  enabled: false
+{{- end }}
 
 jenkins:
   Agent:
@@ -40,14 +52,40 @@ PipelineSecrets:
     MavenSettingsXML: |-
         <settings>
             <localRepository>/home/jenkins/.mvnrepository</localRepository>
-            <!--This sends everything else to /public -->
-            <mirrors>
+{{- if and (hasKey .Requirements "repository") (eq .Requirements.repository "bucketrepo") }}
+              <mirrors>
+                  <mirror>
+                      <id>bucketrepo</id>
+                      <name>bucketrepo mirror</name>
+                      <mirrorOf>*</mirrorOf>
+                      <url>http://bucketrepo/bucketrepo/</url>
+                  </mirror>
+                </mirrors>
+{{- else if and (hasKey .Requirements "repository") (eq .Requirements.repository "none") }}
+              <mirrors>
+                <mirror>
+                  <id>central</id>
+                  <name>US Central</name>
+                  <url>https://repo.maven.apache.org/maven2</url>
+                  <mirrorOf>central</mirrorOf>
+                </mirror>
+                <mirror>
+                  <id>UK</id>
+                  <name>UK Central</name>
+                  <url>https://uk.maven.org/maven2</url>
+                  <mirrorOf>central</mirrorOf>
+                </mirror>
+              </mirrors>
+{{- else }}
+              <mirrors>
                 <mirror>
                     <id>nexus</id>
+                    <name>nexus mirror</name>
                     <mirrorOf>external:*</mirrorOf>
                     <url>http://nexus/repository/maven-group/</url>
                 </mirror>
-            </mirrors>
+              </mirrors>
+{{- end }}
 
             <!-- lets disable the download progress indicator that fills up logs -->
             <interactiveMode>false</interactiveMode>
@@ -72,11 +110,18 @@ PipelineSecrets:
                 <profile>
                     <id>nexus</id>
                     <properties>
-                        <altDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altDeploymentRepository>
-                        <altReleaseDeploymentRepository>local-nexus::default::http://nexus/repository/maven-releases/</altReleaseDeploymentRepository>
-                        <altSnapshotDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+{{- if and (hasKey .Requirements "repository") (eq .Requirements.repository "bucketrepo") }}
+                      <altDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-snapshots/</altDeploymentRepository>
+                      <altReleaseDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-releases/</altReleaseDeploymentRepository>
+                      <altSnapshotDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-snapshots/</altSnapshotDeploymentRepository>
+{{- else if and (hasKey .Requirements "repository") (eq .Requirements.repository "none") }}
+{{- else }}
+                      <altDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altDeploymentRepository>
+                      <altReleaseDeploymentRepository>local-nexus::default::http://nexus/repository/maven-releases/</altReleaseDeploymentRepository>
+                      <altSnapshotDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+{{- end }}
                     </properties>
-
+ 
                     <repositories>
                         <repository>
                             <id>central</id>

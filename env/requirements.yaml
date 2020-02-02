@@ -12,11 +12,13 @@ dependencies:
   condition: lighthouse.enabled
   name: lighthouse
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+- alias: bucketrepo
+  condition: bucketrepo.enabled
+  name: bucketrepo
+  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  version: 0.1.27
 - name: jenkins-x-platform
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-# - name: "sso-operator"
-#   repository: "https://storage.googleapis.com/chartmuseum.jenkins-x.io"
-#   version: "1.2.33"
 - name: jx-app-replicator
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
   version: 1.0.14
