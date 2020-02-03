@@ -7,14 +7,13 @@ cleanup:
   enabled: false
 
 chartmuseum:
-{{- if and (hasKey .Requirements "repository") (eq .Requirements.repository "bucketrepo") }}
-  enabled: false
-{{- else }}
+{{- if hasKey .Requirements "repository"}}
+{{- if or (eq .Requirements.repository "nexus") (eq .Requirements.repository "") }}
+  enabled: true
   env:
     secret:
       BASIC_AUTH_USER: "{{ .Parameters.adminUser.username }}"
       BASIC_AUTH_PASS: "{{ .Parameters.adminUser.password }}"
-{{- end }}
     open:
       AUTH_ANONYMOUS_GET: true
       DISABLE_API: false
@@ -27,6 +26,13 @@ chartmuseum:
     requests:
       cpu: 320m
       memory: 256Mi
+{{- else }}
+  enabled: false
+{{- end }}
+{{- else }}
+  enabled: false
+{{- end }}
+
 nexus:
   defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
 {{- if hasKey .Requirements "repository"}}
