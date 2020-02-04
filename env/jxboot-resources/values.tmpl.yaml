@@ -90,6 +90,7 @@ jenkins:
 jenkins-x-platform:
   chartmuseum:
     enabled: true
+    ingress: false
     env:
       open:
         AUTH_ANONYMOUS_GET: true
