@@ -29,9 +29,7 @@
     "pipelineUser": {
       "type": "object",
       "required": [
-        "username",
-        "email",
-        "token"
+        "username"
       ],
       "properties": {
         "username": {
