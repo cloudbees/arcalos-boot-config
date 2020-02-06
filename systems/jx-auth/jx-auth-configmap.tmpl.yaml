@@ -1,4 +1,5 @@
 {{- if eq .Requirements.secretStorage "vault" }}
+{{- if eq .Requirements.githubApp.enabled false }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -21,4 +22,5 @@ data:
       - apitoken: "{{ .Parameters.pipelineUser.token }}"
         bearertoken: ""
         username: "{{ .Parameters.pipelineUser.username }}"
+{{- end }}
 {{- end }}
