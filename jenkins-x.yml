@@ -287,6 +287,8 @@ pipelineConfig:
             - step
             - git
             - credentials
+            - --github-app-owner
+            - arcalos-environments
             command: jx
             dir: /workspace/source
             name: get-git-token
