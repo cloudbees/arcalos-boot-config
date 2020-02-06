@@ -285,6 +285,13 @@ pipelineConfig:
             name: refresh-git-tokens
           - args:
             - step
+            - git
+            - credentials
+            command: jx
+            dir: /workspace/source
+            name: get-git-token
+          - args:
+            - step
             - verify
             - env
             command: jx
