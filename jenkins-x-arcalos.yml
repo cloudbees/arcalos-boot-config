@@ -13,11 +13,6 @@ pipelineConfig:
           - valueFrom:
               secretKeyRef:
                 name: arcalos-secret
-                key: admin_password
-            name: ADMIN_PASSWORD
-          - valueFrom:
-              secretKeyRef:
-                name: arcalos-secret
                 key: segment_write_key
             name: SEGMENT_WRITE_KEY
           - valueFrom:
@@ -45,16 +40,8 @@ pipelineConfig:
                 name: arcalos-secret
                 key: pipeline_github_email
             name: PIPELINE_GITHUB_EMAIL
-          - valueFrom:
-              secretKeyRef:
-                name: arcalos-secret
-                key: git_owner
+          - value: arcalos-environments
             name: GIT_OWNER
-          - valueFrom:
-              secretKeyRef:
-                name: arcalos-secret
-                key: prow_hmac_token
-            name: PROW_HMAC_TOKEN
           - value: jxaas
             name: USER
           - name: INGRESS_TLS_PRODUCTION
