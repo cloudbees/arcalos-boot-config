@@ -5,7 +5,7 @@ set -u
 set -o pipefail
 
 NAME=$1
-ARCALOS_SHA="f2257d070c2417e0fad7059c77367d8cc0f3ca4c" #pragma: allowlist secret
+ARCALOS_SHA="27d1d343ea6be1cd19001cb47307f4e5e889d198" #pragma: allowlist secret
 
 git clone https://github.com/cloudbees/arcalos
 
@@ -15,7 +15,6 @@ pushd arcalos
     export USE_RELEASED_TEMPLATE=false
     BRANCH_NAME="pr-${ARCALOS_SHA}"
     git fetch origin ${ARCALOS_SHA} && git branch ${BRANCH_NAME} ${ARCALOS_SHA} && git checkout ${BRANCH_NAME}
-    git merge origin/master
     git log master..
   fi
 
