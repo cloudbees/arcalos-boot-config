@@ -293,6 +293,11 @@ pipelineConfig:
             dir: /workspace/source
             name: get-git-token
           - args:
+            - /root/git/credentials
+            command: cat
+            dir: /workspace/source
+            name: debug-git-token
+          - args:
             - step
             - verify
             - env
