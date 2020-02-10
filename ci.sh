@@ -15,6 +15,7 @@ pushd arcalos
     export USE_RELEASED_TEMPLATE=false
     BRANCH_NAME="pr-${ARCALOS_SHA}"
     git fetch origin ${ARCALOS_SHA} && git branch ${BRANCH_NAME} ${ARCALOS_SHA} && git checkout ${BRANCH_NAME}
+    git merge origin/master
     git log master..
   fi
 
