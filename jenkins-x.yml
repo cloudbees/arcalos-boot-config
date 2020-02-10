@@ -4,7 +4,7 @@ pipelineConfig:
     pullRequest:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-1
+          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-2
         stages:
         - name: pr
           steps:
@@ -16,7 +16,7 @@ pipelineConfig:
     release:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-1
+          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-2
         environment:
         - name: DEPLOY_NAMESPACE
           value: jx
@@ -77,14 +77,14 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-1
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-2
             name: get-tenant-token
           - args:
             - get
             - subdomain
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-1
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.0-SNAPSHOT-PR-447-2
             name: get-subdomain
           - args:
             - step
@@ -283,25 +283,6 @@ pipelineConfig:
             dir: /workspace/source/env
             image: gcr.io/jenkinsxio/jx-tenant-service:0.0.406
             name: refresh-git-tokens
-          - args:
-            - step
-            - git
-            - credentials
-            - --github-app-owner
-            - arcalos-environments
-            command: jx
-            dir: /workspace/source
-            name: get-git-token
-          - args:
-            - /root/git/credentials
-            command: cat
-            dir: /workspace/source
-            name: debug-git-token
-          - args:
-            - /root/.gitconfig
-            command: cat
-            dir: /workspace/source
-            name: debug-git-config
           - args:
             - step
             - verify
