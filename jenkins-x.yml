@@ -287,7 +287,6 @@ pipelineConfig:
             - step
             - verify
             - env
-            - --verbose=true
             command: jx
             dir: /workspace/source
             name: verify-env
