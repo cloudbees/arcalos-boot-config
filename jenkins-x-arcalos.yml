@@ -10,40 +10,44 @@ pipelineConfig:
             time: 90
             unit: minutes
         environment:
-          - valueFrom:
+          - name: SEGMENT_WRITE_KEY
+            valueFrom:
               secretKeyRef:
                 name: arcalos-secret
                 key: segment_write_key
-            name: SEGMENT_WRITE_KEY
-          - valueFrom:
+          - name: DOMAIN_ISSUER_PASSWORD
+            valueFrom:
               secretKeyRef:
                 name: arcalos-secret
                 key: domain_issuer_password
-            name: DOMAIN_ISSUER_PASSWORD
-          - valueFrom:
+          - name: DOMAIN_ISSUER_USERNAME
+            valueFrom:
               secretKeyRef:
                 name: arcalos-secret
                 key: domain_issuer_username
-            name: DOMAIN_ISSUER_USERNAME
-          - valueFrom:
-              secretKeyRef:
-                name: arcalos-secret
-                key: pipeline_github_user
-            name: PIPELINE_GITHUB_USER
-          - valueFrom:
-              secretKeyRef:
-                name: arcalos-secret
-                key: pipeline_github_token
-            name: PIPELINE_GITHUB_TOKEN
-          - valueFrom:
+          - name: PIPELINE_GITHUB_USER
+            value: "arcalos-staging[bot]"
+          - name: PIPELINE_GITHUB_TOKEN
+            value: "A000000000000000000000000000000000000000"
+          - name: PIPELINE_GITHUB_EMAIL
+            valueFrom:
               secretKeyRef:
                 name: arcalos-secret
                 key: pipeline_github_email
-            name: PIPELINE_GITHUB_EMAIL
-          - value: arcalos-environments
-            name: GIT_OWNER
-          - value: jxaas
-            name: USER
+          - name: BDD_GITHUB_USER
+            valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: pipeline_github_user
+          - name: BDD_GITHUB_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: arcalos-secret
+                key: pipeline_github_token
+          - name: GIT_OWNER
+            value: arcalos-environments
+          - name: USER
+            value: jxaas
           - name: INGRESS_TLS_PRODUCTION
             value: "no"  
         stages:
