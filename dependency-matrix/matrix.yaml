@@ -7,7 +7,7 @@ dependencies:
   versionURL: https://github.com/cloudbees/jx-tenant-service/releases/tag/v0.0.420
 - host: github.com
   owner: cloudbees
-  repo: arcalos-instance-template
-  url: https://github.com/cloudbees/arcalos-instance-template
-  version: 0.1.35
-  versionURL: https://github.com/cloudbees/arcalos-instance-template/releases/tag/v0.1.35
+  repo: arcalos-config
+  url: https://github.com/cloudbees/arcalos-config
+  version: 0.0.3
+  versionURL: https://github.com/cloudbees/arcalos-config/releases/tag/v0.0.3
