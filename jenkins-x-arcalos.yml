@@ -1,5 +1,12 @@
 buildPack: none
 pipelineConfig:
+  env:
+    - name: INSTANCE_TEMPLATE_VERSION
+      value: "v0.1.32"
+    - name: ARCALOS_CONFIG_VERSION
+      value: "v0.0.3"
+    - name: ARCALOS_CONFIG_DIR
+      value: "/workspace/source/arcalos-config"
   pipelines:
     pullRequest:
       pipeline:
@@ -54,16 +61,16 @@ pipelineConfig:
         - name: create
           options:
             volumes:
-              - name: sa
+              - name: cb-aps-poc-sa
                 secret:
                   secretName: arcalos-secret
                   items:
                     - key: ci_sa
-                      path: sa/ci_bot.json
+                      path: ci_bot.json
             containerOptions:
               volumeMounts:
-                - mountPath: /secret
-                  name: sa
+                - mountPath: /secret/cb-aps-poc-sa
+                  name: cb-aps-poc-sa
           steps:
           - name: ci
             command: ./ci.sh
