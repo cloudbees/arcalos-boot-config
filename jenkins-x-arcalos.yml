@@ -2,7 +2,7 @@ buildPack: none
 pipelineConfig:
   env:
     - name: INSTANCE_TEMPLATE_VERSION
-      value: "v0.1.32"
+      value: "v0.1.35"
     - name: ARCALOS_CONFIG_VERSION
       value: "v0.0.3"
     - name: ARCALOS_CONFIG_DIR
