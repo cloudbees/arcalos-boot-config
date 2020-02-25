@@ -1,12 +1,5 @@
 buildPack: none
 pipelineConfig:
-  env:
-    - name: INSTANCE_TEMPLATE_VERSION
-      value: "v0.1.32"
-    - name: ARCALOS_CONFIG_VERSION
-      value: "v0.0.3"
-    - name: ARCALOS_CONFIG_DIR
-      value: "/workspace/source/arcalos-config"
   pipelines:
     pullRequest:
       pipeline:
@@ -17,6 +10,11 @@ pipelineConfig:
             time: 90
             unit: minutes
         environment:
+          - name: APS_ENVIRONMENT
+            valueFrom:
+              configMapKeyRef:
+                name: arcalos-config
+                key: aps_environment
           - name: SEGMENT_WRITE_KEY
             valueFrom:
               secretKeyRef:
