@@ -65,9 +65,9 @@ pipelineConfig:
                   items:
                     - key: ci_sa
                       path: ci_bot.json
-              - name: arcalos-prod-sa
+              - name: arcalos-alpha-prod-sa
                 secret:
-                  secretName: arcalos-prod-secret
+                  secretName: arcalos-alpha-prod-secret
                   items:
                     - key: arcalos_prod_sa
                       path: ci_bot.json
@@ -75,7 +75,7 @@ pipelineConfig:
               volumeMounts:
                 - name: cb-aps-poc-sa
                   mountPath: /secret/cb-aps-poc-sa
-                - name: arcalos-prod-sa
+                - name: arcalos-alpha-prod-sa
                   mountPath: /secret/arcalos-producer-prod-sa
           steps:
           - name: ci
