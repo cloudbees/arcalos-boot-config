@@ -1,1 +1,4 @@
 segmentWriteKey: "{{ .Parameters.segmentWriteKey }}"
+
+env:
+  JX_LOG_FORMAT: stackdriver
