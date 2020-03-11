@@ -8,5 +8,5 @@ else
   else
     jx create user --login=${USER_EMAIL}
   fi
-  jx edit userroles --login=${USER_EMAIL} --role=owner,jx-view
+  jx edit userroles --login=${USER_EMAIL} --role=owner,jx-env-view
 fi
