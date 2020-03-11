@@ -49,7 +49,7 @@ pipelineConfig:
               secretKeyRef:
                 name: arcalos-secret
                 key: pipeline_github_token
-          - name: GIT_OWNER
+          - name: DEFAULT_ORGANISATION
             value: arcalos-environments
           - name: USER
             value: jxaas
