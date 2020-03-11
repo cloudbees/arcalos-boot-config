@@ -189,3 +189,6 @@ versions:
 
 refresh:
   enabled: {{ .Requirements.githubApp.enabled }}
+
+envView:
+  enabled: true
