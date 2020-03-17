@@ -84,7 +84,7 @@ pipelineConfig:
             - hmac
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.508
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.516
             name: update-hmac-token
           - args:
             - get
