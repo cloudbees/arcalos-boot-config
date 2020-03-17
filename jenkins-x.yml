@@ -80,6 +80,13 @@ pipelineConfig:
             image: gcr.io/jenkinsxio/jx-tenant-service:0.0.511
             name: get-tenant-token
           - args:
+            - update
+            - hmac
+            command: jxt
+            dir: /workspace/source/env
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.508
+            name: update-hmac-token
+          - args:
             - get
             - subdomain
             command: jxt
