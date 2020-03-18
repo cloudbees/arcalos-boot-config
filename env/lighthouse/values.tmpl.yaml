@@ -18,11 +18,9 @@ service:
 tide:
   githubApp:
     enabled: true
-
-replicaCount: 0
-{{- else }}
-replicaCount: 1
 {{- end }}
+
+replicaCount: 1
 
 image:
   repository: gcr.io/jenkinsxio/lighthouse
