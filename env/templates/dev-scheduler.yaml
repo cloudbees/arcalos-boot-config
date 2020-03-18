@@ -78,7 +78,7 @@ spec:
         includedBranches: {}
         labels:
           entries:
-          - jx/boot
+          - saas/boot
         milestone: ""
         missingLabels:
           entries:

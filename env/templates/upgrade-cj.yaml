@@ -22,7 +22,7 @@ spec:
             - upgrade
             - boot
             - --latest-release=true
-            - --labels=jx/boot
+            - --labels=saas/boot
             command:
             - jx
             image: gcr.io/jenkinsxio/builder-go:{{ .Values.versions.builders }}
