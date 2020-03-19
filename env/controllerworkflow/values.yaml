@@ -1,1 +1,4 @@
 enabled: false
+
+env:
+  JX_LOG_FORMAT: stackdriver
