@@ -8,6 +8,7 @@ verboseLogging: true
 
 env:
   JX_REQUIREMENT_DOMAIN_ISSUER_URL: "{{ .Requirements.ingress.domainIssuerURL }}"
+  JX_LOG_FORMAT: stackdriver
 
 {{- if hasKey .Requirements.cluster "clusterName" }}
 serviceAccount: "{{ .Requirements.cluster.clusterName }}-jb"
