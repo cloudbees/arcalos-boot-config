@@ -298,13 +298,6 @@ pipelineConfig:
             dir: /workspace/source
             name: verify-env
           - args:
-            - update
-            - webhooks
-            - --warn-on-fail
-            command: jx
-            dir: /workspace/source/repositories
-            name: update-webhooks
-          - args:
             - step
             - verify
             - install
