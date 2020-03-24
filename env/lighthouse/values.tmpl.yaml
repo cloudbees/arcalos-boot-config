@@ -15,9 +15,14 @@ service:
   name: hook
   
 {{- if .Requirements.githubApp.enabled }}
+# deprecated
 tide:
   githubApp:
     enabled: true
+
+githubApp:
+  enabled: true
+  username: "{{ .Parameters.pipelineUser.username }}"
 {{- end }}
 
 replicaCount: 1
