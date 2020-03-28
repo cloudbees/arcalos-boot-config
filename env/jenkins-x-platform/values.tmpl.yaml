@@ -196,6 +196,8 @@ controllerbuild:
 {{- else }}
   enabled: false
 {{- end }}
+  env:
+    JX_LOG_FORMAT: "stackdriver"
 
 {{- if hasKey .Requirements.cluster "project" }}
   serviceaccount:
@@ -212,8 +214,12 @@ gcactivities:
   cronjob:
     enabled: true
     schedule: "0/30 * * * *"
+  env:
+    JX_LOG_FORMAT: "stackdriver"  
 
 gcpods:
   cronjob:
     enabled: true
     schedule: "0/30 * * * *"
+  env:
+    JX_LOG_FORMAT: "stackdriver"  
