@@ -4,10 +4,6 @@ dependencies:
 - alias: tekton
   name: tekton
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-- alias: prow
-  condition: prow.enabled
-  name: prow
-  repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
 - alias: lighthouse
   condition: lighthouse.enabled
   name: lighthouse
