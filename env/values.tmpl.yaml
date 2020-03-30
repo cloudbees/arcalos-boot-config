@@ -17,6 +17,11 @@ cluster:
 {{- if .Requirements.ingress.tls.enabled }}
   tls: true
 {{- end }}
+{{- if .Requirements.ingress.externalDNS }}
+  ingress:
+    annotations:
+      external-dns.alpha.kubernetes.io/ttl: "60"
+{{- end }}
 
 gitops:
   versionStreamUrl: {{ .Requirements.versionStream.url }}
