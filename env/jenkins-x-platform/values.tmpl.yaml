@@ -205,6 +205,10 @@ controllerbuild:
       iam.gke.io/gcp-service-account: {{ .Requirements.cluster.clusterName }}-st@{{ .Requirements.cluster.project }}.iam.gserviceaccount.com
 {{- end }}
 
+controllerrole:
+  env:
+    JX_LOG_FORMAT: "stackdriver"
+
 gcactivities:
   args:
     - "gc"
