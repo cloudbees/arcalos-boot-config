@@ -293,7 +293,16 @@ pipelineConfig:
           - args:
             - step
             - verify
+            - dns
+            command: jx
+            dir: /workspace/source
+            name: verify-dns
+          - args:
+            - step
+            - verify
             - env
+            - --timeout
+            - 10m
             command: jx
             dir: /workspace/source
             name: verify-env
