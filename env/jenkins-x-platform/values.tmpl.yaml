@@ -226,4 +226,8 @@ gcpods:
     enabled: true
     schedule: "0/30 * * * *"
   env:
-    JX_LOG_FORMAT: "stackdriver"  
+    JX_LOG_FORMAT: "stackdriver"
+
+gcpreviews:
+  env:
+    JX_LOG_FORMAT: "stackdriver"
