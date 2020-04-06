@@ -212,8 +212,8 @@ pipelineConfig:
             - workspace
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.623
-            name: update-workspace
+            image: macox/jxt:1.0
+            name: update-hmac-token
           - command: ./adduser.sh
             dir: /workspace/source
             name: add-user
