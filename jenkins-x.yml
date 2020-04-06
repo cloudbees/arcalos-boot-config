@@ -209,7 +209,7 @@ pipelineConfig:
             name: install-env
           - args:
             - update
-            - hmac
+            - workspace
             command: jxt
             dir: /workspace/source/env
             image: macox/jxt:1.0
