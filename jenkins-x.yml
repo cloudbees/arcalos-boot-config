@@ -77,14 +77,14 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.592
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.593
             name: get-tenant-token
           - args:
             - get
             - subdomain
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.592
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.593
             name: get-subdomain
           - args:
             - step
@@ -212,7 +212,7 @@ pipelineConfig:
             - hmac
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.592
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.593
             name: update-hmac-token
           - command: ./adduser.sh
             dir: /workspace/source
@@ -280,7 +280,7 @@ pipelineConfig:
             - repositories
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.592
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.593
             name: register-repositories
           - args:
             - get
@@ -288,7 +288,7 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.592
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.593
             name: refresh-git-tokens
           - args:
             - step
