@@ -11,8 +11,10 @@ git:
   name: {{ .Requirements.cluster.gitName | default "github" }}
   server: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
 
-service:
-  name: hook
+webhooks:
+  replicaCount: 2
+  service:
+    name: hook
   
 {{- if .Requirements.githubApp.enabled }}
 # deprecated
@@ -25,10 +27,15 @@ githubApp:
   username: "{{ .Parameters.pipelineUser.username }}"
 {{- end }}
 
-replicaCount: 2
-
 image:
+  # Deprecated in favor of image.parentRepository but retained for backwards compatibility with old value.
   repository: gcr.io/jenkinsxio/lighthouse
+  parentRepository: gcr.io/jenkinsxio
+
+# Deprecated in favor of webhooks.replicaCount and webhooks.service
+replicaCount: 2
+service:
+  name: hook
 
 vault:
 {{- if eq .Requirements.secretStorage "vault" }}
