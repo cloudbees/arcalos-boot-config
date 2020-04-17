@@ -11,7 +11,7 @@ webhook:
 
 {{- if .Requirements.githubApp.enabled }}
 image:
-  upstreamtag: 0.8.0-with-gha
+  upstreamtag: 0.8.0-with-gha-2
   kubeconfigwriter: gcr.io/abayer-pipeline-crd/tekton-for-jx/kubeconfigwriter
   credsinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/creds-init
   gitinit: gcr.io/abayer-pipeline-crd/tekton-for-jx/git-init
