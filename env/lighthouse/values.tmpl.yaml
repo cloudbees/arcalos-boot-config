@@ -54,4 +54,4 @@ logFormat: "stackdriver"
 
 env:
   # https://dashboard.jxaas.live/jenkinsx/teams/cbjx-speakerwhite/projects
-  LIGHTHOUSE_REPORT_URL_BASE: "https://dashboard.jxaas.live/jenkinsx/teams/{{ .Requirements.cluster.clusterName }}"
+  LIGHTHOUSE_REPORT_URL_BASE: "{{ .Parameters.dashboardUrl }}/jenkinsx/teams/{{ .Requirements.cluster.clusterName }}"
