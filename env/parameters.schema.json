@@ -80,7 +80,7 @@
       "type": "string",
       "title": "Base URL of the UI?",
       "description": "What is the base url of the JX UI, lighthouse generated links will be based on this.",
-      "default": "https://example.com"
+      "default": ""
     }
   },
   "allOf": [
