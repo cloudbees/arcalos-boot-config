@@ -51,3 +51,9 @@ user: "{{ .Parameters.pipelineUser.username }}"
 oauthToken: "{{ .Parameters.pipelineUser.token }}"
 
 logFormat: "stackdriver"
+
+env:
+{{- if hasKey .Parameters "dashboardUrl" }}  
+  LIGHTHOUSE_REPORT_URL_BASE: "{{ .Parameters.dashboardUrl }}/jenkinsx"
+  LIGHTHOUSE_REPORT_URL_TEAM: "{{ .Requirements.cluster.clusterName }}"
+{{- end }}
