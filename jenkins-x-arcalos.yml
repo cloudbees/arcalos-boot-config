@@ -4,7 +4,7 @@ pipelineConfig:
     pullRequest:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.636
+          image: gcr.io/jenkinsxio/jx-tenant-service:0.0.651
         options:
           timeout:
             time: 90
@@ -71,12 +71,20 @@ pipelineConfig:
                   items:
                     - key: arcalos_prod_sa
                       path: ci_bot.json
+              - name: datadog-dogrc-secret
+                secret:
+                  secretName: datadog-dogrc-secret
+                  items:
+                    - key: .dogrc
+                      path: .dogrc
             containerOptions:
               volumeMounts:
                 - name: cb-aps-poc-sa
                   mountPath: /secret/cb-aps-poc-sa
                 - name: arcalos-alpha-prod-sa
                   mountPath: /secret/arcalos-producer-prod-sa
+                - mountPath: /datadog/
+                  name: datadog-dogrc-secret
           steps:
           - name: ci
             command: ./ci.sh
