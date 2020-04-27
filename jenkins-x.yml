@@ -21,7 +21,7 @@ pipelineConfig:
         - name: DEPLOY_NAMESPACE
           value: jx
         stages:
-        - name: release
+        - name: initialise_install
           steps:
           - args:
             - apply
@@ -111,170 +111,178 @@ pipelineConfig:
             command: jx
             dir: /workspace/source/env
             name: create-install-values
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --no-vault
-            - --name
-            - jx
-            command: jx
-            dir: /workspace/source/systems/external-dns
-            name: install-external-dns
-          - args:
-            - apply
-            - --wait
-            - --validate=true
-            - -f
-            - https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
-            command: kubectl
-            dir: /workspace/source
-            env:
-            - name: DEPLOY_NAMESPACE
-              value: cert-manager
-            name: install-cert-manager-crds
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --no-vault
-            - --name
-            - jx
-            command: jx
-            dir: /workspace/source/systems/cm
-            env:
-            - name: DEPLOY_NAMESPACE
-              value: cert-manager
-            name: install-cert-manager
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --no-vault
-            - --name
-            - jx
-            command: jx
-            dir: /workspace/source/systems/acme
-            name: install-acme-issuer-and-certificate
-          - args:
-            - step
-            - create
-            - values
-            - --name
-            - parameters
-            command: jx
-            dir: /workspace/source/env
-            name: helm-populate-params
-          - args:
-            - step
-            - create
-            - templated
-            - --parameters-file=../../env/parameters.yaml
-            - --requirements-dir=../../
-            - --template-file=jx-auth-configmap.tmpl.yaml
-            - --config-file=templates/jx-auth-configmap.yaml
-            command: jx
-            dir: /workspace/source/systems/jx-auth
-            name: create-jx-auth-config
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --no-vault
-            - --name
-            - jx-auth
-            command: jx
-            dir: /workspace/source/systems/jx-auth
-            name: install-jx-auth-config
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --name
-            - jenkins-x
-            - --provider-values-dir
-            - ../kubeProviders
-            command: jx
-            dir: /workspace/source/env
-            name: install-env
-          - args:
-            - update
-            - workspace
-            command: jxt
-            dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.657
-            name: update-workspace
-          - command: ./adduser.sh
-            dir: /workspace/source
-            name: add-user
-          - args:
-            - ""
-            - ""
-            - "now populating projects...."
-            - ""
-            - ""
-            command: echo
-            dir: /workspace/source/repositories
-            name: log-repos
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --name
-            - repos
-            command: jx
-            dir: /workspace/source/repositories
-            name: apply-repositories
-          - args:
-            - step
-            - scheduler
-            - config
-            - apply
-            - --direct=true
-            command: jx
-            dir: /workspace/source/prowConfig
-            name: apply-pipeline-schedulers
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --no-vault
-            - --name
-            - velero
-            command: jx
-            dir: /workspace/source/systems/velero
-            env:
-            - name: DEPLOY_NAMESPACE
-              value: velero
-            name: install-velero
-          - args:
-            - step
-            - helm
-            - apply
-            - --boot
-            - --remote
-            - --no-vault
-            - --name
-            - velero-backups
-            command: jx
-            dir: /workspace/source/systems/velero-backups
-            env:
-            - name: DEPLOY_NAMESPACE
-              value: velero
-            name: install-velero-backups
+        - name: parallel_install
+          parallel:
+          - name: batch-1
+            steps:
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --remote
+              - --no-vault
+              - --name
+              - jx
+              command: jx
+              dir: /workspace/source/systems/external-dns
+              name: install-external-dns
+            - args:
+              - apply
+              - --wait
+              - --validate=true
+              - -f
+              - https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
+              command: kubectl
+              dir: /workspace/source
+              env:
+              - name: DEPLOY_NAMESPACE
+                value: cert-manager
+              name: install-cert-manager-crds
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --remote
+              - --no-vault
+              - --name
+              - jx
+              command: jx
+              dir: /workspace/source/systems/cm
+              env:
+              - name: DEPLOY_NAMESPACE
+                value: cert-manager
+              name: install-cert-manager
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --remote
+              - --no-vault
+              - --name
+              - jx
+              command: jx
+              dir: /workspace/source/systems/acme
+              name: install-acme-issuer-and-certificate
+            - args:
+              - step
+              - create
+              - values
+              - --name
+              - parameters
+              command: jx
+              dir: /workspace/source/env
+              name: helm-populate-params
+            - args:
+              - step
+              - create
+              - templated
+              - --parameters-file=../../env/parameters.yaml
+              - --requirements-dir=../../
+              - --template-file=jx-auth-configmap.tmpl.yaml
+              - --config-file=templates/jx-auth-configmap.yaml
+              command: jx
+              dir: /workspace/source/systems/jx-auth
+              name: create-jx-auth-config
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --remote
+              - --no-vault
+              - --name
+              - jx-auth
+              command: jx
+              dir: /workspace/source/systems/jx-auth
+              name: install-jx-auth-config
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --remote
+              - --name
+              - jenkins-x
+              - --provider-values-dir
+              - ../kubeProviders
+              command: jx
+              dir: /workspace/source/env
+              name: install-env
+          - name: batch-2
+            steps:
+            - args:
+              - update
+              - workspace
+              command: jxt
+              dir: /workspace/source/env
+              image: gcr.io/jenkinsxio/jx-tenant-service:0.0.657
+              name: update-workspace
+            - command: ./adduser.sh
+              dir: /workspace/source
+              name: add-user
+            - args:
+              - ""
+              - ""
+              - "now populating projects...."
+              - ""
+              - ""
+              command: echo
+              dir: /workspace/source/repositories
+              name: log-repos
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --name
+              - repos
+              command: jx
+              dir: /workspace/source/repositories
+              name: apply-repositories
+            - args:
+              - step
+              - scheduler
+              - config
+              - apply
+              - --direct=true
+              command: jx
+              dir: /workspace/source/prowConfig
+              name: apply-pipeline-schedulers
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --remote
+              - --no-vault
+              - --name
+              - velero
+              command: jx
+              dir: /workspace/source/systems/velero
+              env:
+              - name: DEPLOY_NAMESPACE
+                value: velero
+              name: install-velero
+            - args:
+              - step
+              - helm
+              - apply
+              - --boot
+              - --remote
+              - --no-vault
+              - --name
+              - velero-backups
+              command: jx
+              dir: /workspace/source/systems/velero-backups
+              env:
+              - name: DEPLOY_NAMESPACE
+                value: velero
+              name: install-velero-backups
+        - name: complete_install
+          steps:
           - args:
             - register
             - repositories
