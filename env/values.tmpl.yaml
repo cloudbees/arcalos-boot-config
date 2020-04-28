@@ -199,3 +199,6 @@ refresh:
 
 envView:
   enabled: true
+
+chartmuseum:
+  enabled: false
