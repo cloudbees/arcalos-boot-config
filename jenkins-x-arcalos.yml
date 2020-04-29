@@ -18,17 +18,17 @@ pipelineConfig:
           - name: SEGMENT_WRITE_KEY
             valueFrom:
               secretKeyRef:
-                name: arcalos-secret
+                name: arcalos-alpha-prod-secret
                 key: segment_write_key
           - name: DOMAIN_ISSUER_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: arcalos-secret
+                name: arcalos-alpha-prod-secret
                 key: domain_issuer_password
           - name: DOMAIN_ISSUER_USERNAME
             valueFrom:
               secretKeyRef:
-                name: arcalos-secret
+                name: arcalos-alpha-prod-secret
                 key: domain_issuer_username
           - name: PIPELINE_GITHUB_USER
             value: "arcalos-staging[bot]"
@@ -37,17 +37,17 @@ pipelineConfig:
           - name: PIPELINE_GITHUB_EMAIL
             valueFrom:
               secretKeyRef:
-                name: arcalos-secret
+                name: arcalos-alpha-prod-secret
                 key: pipeline_github_email
           - name: BDD_GITHUB_USER
             valueFrom:
               secretKeyRef:
-                name: arcalos-secret
+                name: arcalos-alpha-prod-secret
                 key: pipeline_github_user
           - name: BDD_GITHUB_TOKEN
             valueFrom:
               secretKeyRef:
-                name: arcalos-secret
+                name: arcalos-alpha-prod-secret
                 key: pipeline_github_token
           - name: DEFAULT_ORGANISATION
             value: arcalos-environments
@@ -59,12 +59,6 @@ pipelineConfig:
         - name: create
           options:
             volumes:
-              - name: cb-aps-poc-sa
-                secret:
-                  secretName: arcalos-secret
-                  items:
-                    - key: ci_sa
-                      path: ci_bot.json
               - name: arcalos-alpha-prod-sa
                 secret:
                   secretName: arcalos-alpha-prod-secret
@@ -79,8 +73,6 @@ pipelineConfig:
                       path: .dogrc
             containerOptions:
               volumeMounts:
-                - name: cb-aps-poc-sa
-                  mountPath: /secret/cb-aps-poc-sa
                 - name: arcalos-alpha-prod-sa
                   mountPath: /secret/arcalos-producer-prod-sa
                 - mountPath: /datadog/
