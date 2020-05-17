@@ -53,8 +53,6 @@ pipelineConfig:
             value: arcalos-environments
           - name: USER
             value: jxaas
-          - name: INGRESS_TLS_PRODUCTION
-            value: "no"  
         stages:
         - name: create
           options:
