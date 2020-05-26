@@ -132,6 +132,8 @@ jenkins-x-platform:
       size: 100Gi
   postinstalljob:
     enabled: "true"
+  chartmuseum:
+    enabled: false
 
 tekton:
   webhook:
@@ -197,3 +199,6 @@ refresh:
 
 envView:
   enabled: true
+
+chartmuseum:
+  enabled: false
