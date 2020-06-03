@@ -41,4 +41,7 @@ dependencies:
   version: 0.0.6
   condition: jx-arcalos-role-controller.enabled
   alias: arcalosrole
+- name: kubernetes-external-secrets
+  repository: https://godaddy.github.io/kubernetes-external-secrets
+  version: 4.0.0
 
