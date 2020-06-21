@@ -9,9 +9,8 @@ spec:
   # The vault role that will be used to fetch the secrets
   # This role will need to be bound to kubernetes-external-secret's ServiceAccount; see Vault's documentation:
   # https://www.vaultproject.io/docs/auth/kubernetes.html
-  vaultRole: my-vault-role
+  vaultRole: {{ .Requirements.cluster.clusterName }}-vt
   data:
-  - name: password
-    # The full path of the secret to read, as in `vault read secret/data/hello-service/credentials`
-    key: secret/data/hello-service/credentials
-    property: password
+  - name: tenant-service-key
+    key: secret/{{ .Requirements.cluster.clusterName }}/tenant-service-token
+    property: tenant-service-key
