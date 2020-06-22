@@ -1,2 +1,5 @@
 enabled: true
 
+kubernetes-external-secrets:
+  env:
+    VAULT_ADDR: {{ .Requirements.cluster.clusterName }}:8200
