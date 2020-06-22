@@ -202,3 +202,8 @@ envView:
 
 chartmuseum:
   enabled: false
+
+externalSecrets:
+  clusterName: {{ .Requirements.cluster.clusterName }}
+  vaultSA: {{ .Requirements.cluster.clusterName }}-vt
+  vaultMountPoint: "kubernetes"

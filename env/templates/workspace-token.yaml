@@ -5,12 +5,12 @@ metadata:
 spec:
   backendType: vault
   # Your authentication mount point, e.g. "kubernetes"
-  vaultMountPoint: my-kubernetes-vault-mount-point
+  vaultMountPoint: {{ .Values.externalSecrets.vaultMountPoint }}
   # The vault role that will be used to fetch the secrets
   # This role will need to be bound to kubernetes-external-secret's ServiceAccount; see Vault's documentation:
   # https://www.vaultproject.io/docs/auth/kubernetes.html
-  vaultRole: {{ .Requirements.cluster.clusterName }}-vt
+  vaultRole: {{ .Values.externalSecrets.vaultSA }}
   data:
   - name: tenant-service-key
-    key: secret/{{ .Requirements.cluster.clusterName }}/tenant-service-token
+    key: "secret/{{ .Values.externalSecrets.clusterName }}/tenant-service-token"
     property: tenant-service-key
