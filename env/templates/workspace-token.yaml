@@ -10,6 +10,7 @@ spec:
   # This role will need to be bound to kubernetes-external-secret's ServiceAccount; see Vault's documentation:
   # https://www.vaultproject.io/docs/auth/kubernetes.html
   vaultRole: {{ .Values.externalSecrets.vaultSA }}
+  key: "secret/{{ .Values.externalSecrets.clusterName }}/tenant-service-token"
   data:
   - name: token
     key: "secret/{{ .Values.externalSecrets.clusterName }}/tenant-service-token"

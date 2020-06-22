@@ -3,6 +3,6 @@ enabled: true
 kubernetes-external-secrets:
   env:
     VAULT_ADDR: http://{{ .Requirements.cluster.clusterName }}:8200
-    serviceAccount:
-      create: false
-      name: {{ .Requirements.cluster.clusterName }}-vt
+  serviceAccount:
+    create: false
+    name: {{ .Requirements.cluster.clusterName }}-vt
