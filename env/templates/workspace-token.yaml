@@ -11,6 +11,6 @@ spec:
   # https://www.vaultproject.io/docs/auth/kubernetes.html
   vaultRole: {{ .Values.externalSecrets.vaultSA }}
   data:
-  - name: tenant-service-key
+  - name: token
     key: "secret/{{ .Values.externalSecrets.clusterName }}/tenant-service-token"
-    property: tenant-service-key
+    property: token
