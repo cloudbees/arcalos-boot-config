@@ -1,0 +1,17 @@
+apiVersion: kubernetes-client.io/v1
+kind: ExternalSecret
+metadata:
+  name: workspace-token-secret
+spec:
+  backendType: vault
+  # Your authentication mount point, e.g. "kubernetes"
+  vaultMountPoint: {{ .Values.externalSecrets.vaultMountPoint }}
+  # The vault role that will be used to fetch the secrets
+  # This role will need to be bound to kubernetes-external-secret's ServiceAccount; see Vault's documentation:
+  # https://www.vaultproject.io/docs/auth/kubernetes.html
+  vaultRole: {{ .Values.externalSecrets.vaultSA }}
+  key: "secret/data/{{ .Values.externalSecrets.clusterName }}/tenant-service-token"
+  data:
+  - name: token
+    key: "secret/data/{{ .Values.externalSecrets.clusterName }}/tenant-service-token"
+    property: token

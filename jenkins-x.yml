@@ -73,6 +73,18 @@ pipelineConfig:
             dir: /workspace/source/systems/vault
             name: install-vault
           - args:
+            - step
+            - helm
+            - apply
+            - --boot
+            - --remote
+            - --no-vault
+            - --name
+            - kubernetes-external-secrets
+            command: jx
+            dir: /workspace/source/systems/kubernetes-external-secrets
+            name: install-kubernetes-external-secrets
+          - args:
             - get
             - token
             command: jxt

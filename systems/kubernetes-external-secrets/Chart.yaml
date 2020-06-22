@@ -1,0 +1,6 @@
+apiVersion: v1
+description: Kubernetes External Secrets Chart
+maintainers:
+- name: Team
+name: kubernetes-external-secrets
+version: "1"

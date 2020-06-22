@@ -41,4 +41,3 @@ dependencies:
   version: 0.0.6
   condition: jx-arcalos-role-controller.enabled
   alias: arcalosrole
-
