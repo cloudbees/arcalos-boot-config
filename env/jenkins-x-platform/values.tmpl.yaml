@@ -182,6 +182,15 @@ controllerbuild:
 {{- end }}
 
 controllerrole:
+  enabled: false
+  serviceaccount:
+    enabled: false
+  deployment:
+    enabled: false
+  clusterrole:
+    enabled: false
+  role:
+    enabled: false
   env:
     JX_LOG_FORMAT: "stackdriver"
 
